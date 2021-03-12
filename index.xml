@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thunsis</title>
+    <link>https://Thunsis.github.io/</link>
+    <description>Recent content on Thunsis</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 12 Mar 2021 11:53:37 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://Thunsis.github.io/about/about/</link>
+      <pubDate>Fri, 12 Mar 2021 11:53:37 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/about/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Myfirst</title>
+      <link>https://Thunsis.github.io/posts/myfirst/</link>
+      <pubDate>Fri, 12 Mar 2021 11:40:07 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/posts/myfirst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Links</title>
+      <link>https://Thunsis.github.io/links/</link>
+      <pubDate>Fri, 12 Mar 2021 11:39:31 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/links/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
