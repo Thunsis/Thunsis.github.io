@@ -16,10 +16,10 @@
 			
 			<guid>https://Thunsis.github.io/posts/setup-static-github.io-blog-engined-by-hugo-hermit-on-mac/</guid>
 			<description>My thoughts I always wanted to setup a blog and keep updating the best practice which learned from work(in eBay) and self study. By which other peoples may benefit on this, even a little help will make me feel huge proud.
-We used to search on the internet when we are facing issues. We keep dig and dig, try again and again to resolve the problem. A commen case is there are many blogs are just paste from anothor, if we clicked into it, means very time wasting.</description>
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
 			<content type="html"><![CDATA[<h2 id="my-thoughts">My thoughts</h2>
 <p>I always wanted to setup a blog and keep updating the best practice which learned from work(in eBay) and self study. By which other peoples may benefit on this, even a little help will make me feel huge proud.</p>
-<p>We used to search on the internet when we are facing issues. We keep dig and dig, try again and again to resolve the problem. A commen case is there are many blogs are just paste from anothor, if we clicked into it, means very time wasting. So I will always write original blogs, and don’t forget the initial purpose.</p>
+<p>We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised. So I will always write original blogs, and don’t forget the initial purpose.</p>
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crasy..</p>
 <h2 id="install-hugo-and-its-based-program-language-go">Install <code>hugo</code> and its based program language <code>Go</code></h2>
 <h3 id="go">Go</h3>
