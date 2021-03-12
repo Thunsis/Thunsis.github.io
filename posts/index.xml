@@ -6,20 +6,18 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+		<lastBuildDate>Fri, 12 Mar 2021 16:04:53 +0800</lastBuildDate>
 		<atom:link href="https://Thunsis.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title></title>
-			<link>https://Thunsis.github.io/posts/blog_setup/</link>
-			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+			<title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+			<link>https://Thunsis.github.io/posts/setup-static-github.io-blog-engined-by-hugo-hermit-on-mac/</link>
+			<pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
 			
-			<guid>https://Thunsis.github.io/posts/blog_setup/</guid>
-			<description>Setup static github.io blog engined by hugo @ hermit on Mac #blog
-My thoughts I always wanted to setup a blog and keep updating the best practice which learned from work(in eBay) and self study. By which other peoples may benefit on this, even a little help will make me feel huge proud.
-We used to search on the internet when we are facing issues. We keep dig and dig, try again and again to resolve the problem.</description>
-			<content type="html"><![CDATA[<h1 id="setup-static-githubio-blog-engined-by-hugo--hermit-on-mac">Setup static github.io blog engined by hugo @ hermit on Mac</h1>
-<p>#blog</p>
-<h2 id="my-thoughts">My thoughts</h2>
+			<guid>https://Thunsis.github.io/posts/setup-static-github.io-blog-engined-by-hugo-hermit-on-mac/</guid>
+			<description>My thoughts I always wanted to setup a blog and keep updating the best practice which learned from work(in eBay) and self study. By which other peoples may benefit on this, even a little help will make me feel huge proud.
+We used to search on the internet when we are facing issues. We keep dig and dig, try again and again to resolve the problem. A commen case is there are many blogs are just paste from anothor, if we clicked into it, means very time wasting.</description>
+			<content type="html"><![CDATA[<h2 id="my-thoughts">My thoughts</h2>
 <p>I always wanted to setup a blog and keep updating the best practice which learned from work(in eBay) and self study. By which other peoples may benefit on this, even a little help will make me feel huge proud.</p>
 <p>We used to search on the internet when we are facing issues. We keep dig and dig, try again and again to resolve the problem. A commen case is there are many blogs are just paste from anothor, if we clicked into it, means very time wasting. So I will always write original blogs, and don’t forget the initial purpose.</p>
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crasy..</p>
@@ -27,11 +25,11 @@ We used to search on the internet when we are facing issues. We keep dig and dig
 <h3 id="go">Go</h3>
 <p>You can google <em>Go install</em>,  download .dmg and install. That’s quiet easy.</p>
 <h3 id="hugo">hugo</h3>
-<p><code>brew install hugo</code></p>
-<h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme</h2>
-<p>create main folder by hugo new command.
-<code>hugo new site your_site_name</code></p>
-<p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
+<pre><code>brew install hugo
+</code></pre><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme</h2>
+<p>create main folder by hugo new command.</p>
+<pre><code>hugo new site your_site_name
+</code></pre><p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
 <pre><code>cd your_site_name
 git clone https://github.com/Track3/hermit.git themes/hermit
 </code></pre><p>create some web pages in .md format, following commands will automatically generate subfolder names <em>posts</em> and <em>about</em>.</p>
@@ -62,11 +60,12 @@ theme = &quot;hermit&quot;
     url = &quot;about/&quot;
     weight = 20
 # menu stucture, need to be aligned with .md files you created
-</code></pre><p>Now you can see the website by <code>hugo server -D</code>, congratulations!</p>
-<h2 id="deploy-to-github-repo">Deploy to github repo</h2>
+</code></pre><p>Now you can see the website by, congratulations!</p>
+<pre><code>hugo server -D
+</code></pre><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
 <p>We have get blog ready in localhost, but there still a way to go.. Carry on!</p>
 <h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it</h3>
-<p>I I won’t go into details on creating repo names <code>your_name.github.io</code>, there is a important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
+<p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is a important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
 <pre><code>name: github pages
 
 on:
@@ -98,9 +97,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 </code></pre><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo</h3>
-<p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.
-<code>hugo</code></p>
-<p>Now we push it into repo.</p>
+<p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
+<pre><code>hugo
+</code></pre><p>Now we push it into repo.</p>
 <pre><code>cd public
 git remote add origin https://github.com/Thunsis/Thunsis.github.io.git
 git add .

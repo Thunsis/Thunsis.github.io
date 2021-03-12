@@ -6,6 +6,16 @@
     <description>Recent content in Tags on Thunsis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://Thunsis.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 12 Mar 2021 16:04:53 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo</title>
+      <link>https://Thunsis.github.io/tags/hugo/</link>
+      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
