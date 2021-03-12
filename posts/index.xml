@@ -36,7 +36,7 @@ git clone https://github.com/Track3/hermit.git themes/hermit
 <pre><code>hugo new posts/my-first-post.md
 hugo new about/about.md
 </code></pre><p>Ather this, hugo ducument says <code>hugo server -D</code>
-But I saw nothing when opened http://localhost:1313/
+But I saw nothing when opened http://localhost:1313/.
 After a huge struggling, I finally saw the contents.</p>
 <p>Needed actions are:</p>
 <ol>
@@ -59,7 +59,7 @@ theme = &quot;hermit&quot;
     name = &quot;About&quot;
     url = &quot;about/&quot;
     weight = 20
-# menu stucture, need to be aligned with .md files you created
+# menu stucture, need to be aligned with /content/ subfolders you created
 </code></pre><p>Now you can see the website by, congratulations!</p>
 <pre><code>hugo server -D
 </code></pre><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
