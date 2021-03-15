@@ -63,7 +63,7 @@ theme = &quot;hermit&quot;
 </code></pre><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
 <p>We have get blog ready in localhost, but there still a way to go.. Carry on!</p>
 <h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it</h3>
-<p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is a important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
+<p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is an important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
 <pre><code>name: github pages
 
 on:
