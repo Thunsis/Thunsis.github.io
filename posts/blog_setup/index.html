@@ -12,7 +12,7 @@
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.">
 <meta itemprop="datePublished" content="2021-03-12T16:04:53+08:00" />
 <meta itemprop="dateModified" content="2021-03-12T16:04:53+08:00" />
-<meta itemprop="wordCount" content="612">
+<meta itemprop="wordCount" content="593">
 
 
 
@@ -80,9 +80,7 @@ We used to search on the internet when we are facing issues. We keep digging and
 <p>I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.</p>
 <p>We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised. So I will always write original blogs, and don’t forget the initial purpose.</p>
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crasy..</p>
-<h2 id="install-hugo-and-its-based-program-language-go">Install <code>hugo</code> and its based program language <code>Go</code><a href="#install-hugo-and-its-based-program-language-go" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
-<h3 id="go">Go<a href="#go" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<p>You can google <em>Go install</em>,  download .dmg and install. That’s quiet easy.</p>
+<h2 id="install-hugo">Install <code>hugo</code><a href="#install-hugo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <h3 id="hugo">hugo<a href="#hugo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre><code>brew install hugo
 </code></pre><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme<a href="#create-site-and-add-your-favorate-theme" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
@@ -101,7 +99,7 @@ After a huge struggling, I finally saw the contents.</p>
 <ol>
 <li>Remove draft line in *.md you just created, hugo won’t deploy drafts unless you append this command <code>--buildDrafts</code>.
 However, after I made change accordingly, website still is blank.</li>
-<li>Paste <code>config.toml</code>  from your <code>themes/theme_name/exampleSite</code>folder to your site main folder. And modify same customer settings, I am only listing necessary parts:</li>
+<li>Copy <code>config.toml</code>  from your <code>themes/theme_name/exampleSite</code>folder to your site main folder. And modify some customer settings, I am only listing necessary parts:</li>
 </ol>
 <pre><code>baseURL = &quot;https://Thunsis.github.io&quot;
 # your github.io url
@@ -178,7 +176,7 @@ git push -u origin master
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://Thunsis.github.io/tags/hugo">hugo</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>612 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>593 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-03-12 16:04 &#43;0800</p>
 			</footer>
 		</article>
