@@ -9,13 +9,13 @@
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Wed, 17 Mar 2021 17:50:51 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to handle mutiple github accounts in same laptop</title>
+      <title>How to handle mutiple git accounts in same laptop</title>
       <link>https://Thunsis.github.io/posts/mutiple_gits/</link>
       <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
       
       <guid>https://Thunsis.github.io/posts/mutiple_gits/</guid>
-      <description>It’s quiet easy if we only have one git account, and it became confused when we want to add more account. I also met this problem. But I have find solutions so let me show how to handle it.
-You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there should have 2 circumstances. however you can consider it as one condition: same email or not.</description>
+      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
+You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
     </item>
     
     <item>
