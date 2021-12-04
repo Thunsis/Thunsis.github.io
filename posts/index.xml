@@ -162,7 +162,13 @@ jobs:
 <pre><code>hugo
 </code></pre><p>Now we push it into repo.</p>
 <pre><code>cd public
+git init
 git remote add origin https://github.com/Thunsis/Thunsis.github.io.git
+git config user.name &quot;self_github_account_name&quot;
+git config user.email SelfEmailNameA@xxx.com
+git pull
+git checkout master
+git branch --set-upstream-to=origin/master
 git add .
 git commit -a -m 'my blog'
 git push -u origin master
