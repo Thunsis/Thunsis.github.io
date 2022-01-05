@@ -97,8 +97,8 @@ nums 的每个元素都将在 [-9999, 9999]之间。
 <p>关于计算长度的几个方法</p>
 <ul>
 <li>length : <strong>Arrays</strong> (int[], double[], String[]) — 取得Array的长度</li>
-<li>length(): <strong>String related Object</strong>(String, StringBuilder, etc) — 取得字符串的长度</li>
-<li>size():<strong>Collection Object</strong> (ArrayList, Set, etc) — 取得泛型集合大小</li>
+<li>length() : <strong>String related Object</strong>(String, StringBuilder, etc) — 取得字符串的长度</li>
+<li>size() : <strong>Collection Object</strong> (ArrayList, Set, etc) — 取得泛型集合大小</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span><span class="o">{</span>
