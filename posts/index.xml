@@ -92,14 +92,14 @@ nums 为无重复元素的升序排列数组
 <li>如果数组里不存在，插入的位置为right。</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">searchInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
         <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">;</span>
-            <span class="o">}</span> 
+                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span><span class="o">;</span>
+            <span class="o">}</span>
             <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
                 <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
             <span class="o">}</span>
@@ -107,11 +107,12 @@ nums 为无重复元素的升序排列数组
                 <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">right</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">};</span>
+<span class="o">}</span>
 </code></pre></div><h2 id="notice-points">Notice Points</h2>
-<p>和<a href="https://thunsis.github.io/posts/704.binary-search/">704.binary-search</a>的区别是多考虑了不在数组内的情况，在right的基础上，右闭加右开不加即可。</p>
+<p>和<a href="https://thunsis.github.io/posts/704.binary-search/">704.binary-search</a>的区别是多考虑了不在数组内的情况，在right的基础上，右闭加右开不加即可。
+在二分查找中，坚持循环区间开闭的不变量。</p>
 ]]></content>
 		</item>
 		
