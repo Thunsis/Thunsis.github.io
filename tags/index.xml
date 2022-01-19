@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Thunsis</title>
+    <title>Tags on funcfun</title>
     <link>https://Thunsis.github.io/tags/</link>
-    <description>Recent content in Tags on Thunsis</description>
+    <description>Recent content in Tags on funcfun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 06 Jan 2022 12:53:31 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>https://Thunsis.github.io/tags/git/</link>
+      <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://Thunsis.github.io/tags/hugo/</link>
+      <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
+      
+      <guid>https://Thunsis.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>array</title>
       <link>https://Thunsis.github.io/tags/array/</link>
@@ -41,24 +59,6 @@
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
       <guid>https://Thunsis.github.io/tags/leetcode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://Thunsis.github.io/tags/git/</link>
-      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
-      
-      <guid>https://Thunsis.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://Thunsis.github.io/tags/hugo/</link>
-      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
-      
-      <guid>https://Thunsis.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
