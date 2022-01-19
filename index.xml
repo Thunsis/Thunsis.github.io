@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jan 2022 16:09:02 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://func.fun/about/about/</link>
+      <pubDate>Wed, 19 Jan 2022 16:09:02 +0800</pubDate>
+      
+      <guid>https://func.fun/about/about/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bind github.io with your custom domain</title>
       <link>https://func.fun/posts/bind_domain/</link>
