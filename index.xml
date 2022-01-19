@@ -2,55 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>funcfun</title>
-    <link>https://Thunsis.github.io/</link>
+    <link>https://func.fun/</link>
     <description>Recent content on funcfun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bind github.io with your custom domain</title>
-      <link>https://Thunsis.github.io/posts/bind_domain/</link>
+      <link>https://func.fun/posts/bind_domain/</link>
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/posts/bind_domain/</guid>
+      <guid>https://func.fun/posts/bind_domain/</guid>
       <description>添加2条域名解析： CNAME - @ - your.github.io CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾</description>
     </item>
     
     <item>
       <title>35.search-insert-position</title>
-      <link>https://Thunsis.github.io/posts/35.search-insert-position/</link>
+      <link>https://func.fun/posts/35.search-insert-position/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/posts/35.search-insert-position/</guid>
+      <guid>https://func.fun/posts/35.search-insert-position/</guid>
       <description>Description 力扣 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间</description>
     </item>
     
     <item>
       <title>704.binary-search</title>
-      <link>https://Thunsis.github.io/posts/704.binary-search/</link>
+      <link>https://func.fun/posts/704.binary-search/</link>
       <pubDate>Wed, 08 Dec 2021 12:25:36 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/posts/704.binary-search/</guid>
+      <guid>https://func.fun/posts/704.binary-search/</guid>
       <description>Description 力扣 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1:</description>
     </item>
     
     <item>
       <title>How to handle mutiple git accounts in same laptop</title>
-      <link>https://Thunsis.github.io/posts/mutiple_gits/</link>
+      <link>https://func.fun/posts/mutiple_gits/</link>
       <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/posts/mutiple_gits/</guid>
+      <guid>https://func.fun/posts/mutiple_gits/</guid>
       <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
 You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
     </item>
     
     <item>
       <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
-      <link>https://Thunsis.github.io/posts/blog_setup/</link>
+      <link>https://func.fun/posts/blog_setup/</link>
       <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/posts/blog_setup/</guid>
+      <guid>https://func.fun/posts/blog_setup/</guid>
       <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
     </item>

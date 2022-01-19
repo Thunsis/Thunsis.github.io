@@ -2,63 +2,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on funcfun</title>
-    <link>https://Thunsis.github.io/tags/</link>
+    <link>https://func.fun/tags/</link>
     <description>Recent content in Tags on funcfun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://Thunsis.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git</title>
-      <link>https://Thunsis.github.io/tags/git/</link>
+      <link>https://func.fun/tags/git/</link>
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/git/</guid>
+      <guid>https://func.fun/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://Thunsis.github.io/tags/hugo/</link>
+      <link>https://func.fun/tags/hugo/</link>
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/hugo/</guid>
+      <guid>https://func.fun/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>array</title>
-      <link>https://Thunsis.github.io/tags/array/</link>
+      <link>https://func.fun/tags/array/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/array/</guid>
+      <guid>https://func.fun/tags/array/</guid>
       <description></description>
     </item>
     
     <item>
       <title>binary-search</title>
-      <link>https://Thunsis.github.io/tags/binary-search/</link>
+      <link>https://func.fun/tags/binary-search/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/binary-search/</guid>
+      <guid>https://func.fun/tags/binary-search/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>https://Thunsis.github.io/tags/java/</link>
+      <link>https://func.fun/tags/java/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/java/</guid>
+      <guid>https://func.fun/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>leetcode</title>
-      <link>https://Thunsis.github.io/tags/leetcode/</link>
+      <link>https://func.fun/tags/leetcode/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://Thunsis.github.io/tags/leetcode/</guid>
+      <guid>https://func.fun/tags/leetcode/</guid>
       <description></description>
     </item>
     
