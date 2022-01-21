@@ -6,8 +6,152 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate>
+		<lastBuildDate>Fri, 21 Jan 2022 13:25:31 +0800</lastBuildDate>
 		<atom:link href="https://func.fun/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>34.find-first-and-last-position-of-element-in-sorted-array</title>
+			<link>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</link>
+			<pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
+			
+			<guid>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</guid>
+			<description>Description 力扣 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 t</description>
+			<content type="html"><![CDATA[<h2 id="description">Description</h2>
+<p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">力扣</a></p>
+<pre><code>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
+
+如果数组中不存在目标值 target，返回 [-1, -1]。
+
+进阶：
+
+你可以设计并实现时间复杂度为 O(log n) 的算法解决此问题吗？
+ 
+
+示例 1：
+
+输入：nums = [5,7,7,8,8,10], target = 8
+输出：[3,4]
+示例 2：
+
+输入：nums = [5,7,7,8,8,10], target = 6
+输出：[-1,-1]
+示例 3：
+
+输入：nums = [], target = 0
+输出：[-1,-1]
+ 
+
+提示：
+
+0 &lt;= nums.length &lt;= 105
+-109 &lt;= nums[i] &lt;= 109
+nums 是一个非递减数组
+-109 &lt;= target &lt;= 109
+</code></pre><h2 id="solution">Solution</h2>
+<ol>
+<li>这里都用左右闭合的方法。</li>
+<li>简单版思路清晰一些，两段二分代码分别找rightBorder和leftBorder。</li>
+<li>复杂版，一段二分代码。</li>
+<li>这两种方案都是进行了两次二分查找。</li>
+<li>关键在于nums[mid]=target的情况下的条件处理，向右逼近得leftBorder，向左逼近得rightBorder。</li>
+</ol>
+<p>[1,2,3,4,5,5,5,6,7,8]</p>
+<p>比如 left = 1， right = 7， mid = 4
+nums[mid] == nums[4] == 5 == target
+如果要查找leftBorder， 则 right = mid - 1 = 4
+leftBorder = right = 4 or leftBorder = mid = 5
+下一步 left &lt;= right (1 &lt;= 4)还未跳出循环
+mid = 2
+nums[mid] == nums[2] == 3 &lt; target
+left = mid + 1 = 3
+下一步 left &lt;= right (3 &lt;= 4)还未跳出循环
+mid = 3
+nums[mid] == nums[3] == 4 &lt; target
+left = mid + 1 = 4
+下一步 left &lt;= right (4 &lt;= 4)还未跳出循环
+mid = 4
+nums[mid] == nums[4] == 5 = target
+如果要查找leftBorder， 则 right = mid - 1 = 3
+leftBorder = right = 3 or leftBorder = mid = 4
+下一步 跳出循环
+return leftBorder+1 = 4 or leftBorder = 4</p>
+<h3 id="简单法">简单法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">getRightBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">getLeftBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">==</span> <span class="o">-</span><span class="n">2</span> <span class="o">||</span> <span class="n">leftBorder</span> <span class="o">==</span> <span class="o">-</span><span class="n">2</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="n">1</span><span class="o">,-</span><span class="n">1</span><span class="o">};</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">-</span> <span class="n">leftBorder</span> <span class="o">&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">leftBorder</span><span class="o">+</span><span class="n">1</span><span class="o">,</span> <span class="n">rightBorder</span><span class="o">-</span><span class="n">1</span><span class="o">};</span> 
+        <span class="k">else</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="n">1</span><span class="o">,-</span><span class="n">1</span><span class="o">};</span>
+    <span class="o">}</span>
+    
+
+    <span class="kt">int</span> <span class="nf">getRightBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="o">-</span><span class="n">2</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+                <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">rightBorder</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">getLeftBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="o">-</span><span class="n">2</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+                <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">leftBorder</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+
+</code></pre></div><h3 id="复杂法">复杂法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="n">1</span><span class="o">,</span> <span class="o">-</span><span class="n">1</span><span class="o">};</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//leftOrRight为true找左边界 false找右边界
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">leftOrRight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">mid</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+                <span class="c1">//处理target == nums[mid]
+</span><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">leftOrRight</span><span class="o">)</span>
+                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Bind github.io with your custom domain</title>

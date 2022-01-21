@@ -3,17 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/tags/array/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/tags/binary-search/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/tags/java/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/tags/leetcode/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/posts/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/tags/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://func.fun/about/</loc>
     <lastmod>2022-01-19T16:24:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/posts/bind_domain/</loc>
-    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/</loc>
     <lastmod>2022-01-18T17:12:25+08:00</lastmod>
   </url>
   
@@ -28,37 +63,7 @@
   </url>
   
   <url>
-    <loc>https://func.fun/posts/</loc>
-    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/tags/</loc>
-    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://func.fun/posts/35.search-insert-position/</loc>
-    <lastmod>2022-01-06T12:53:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/tags/array/</loc>
-    <lastmod>2022-01-06T12:53:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/tags/binary-search/</loc>
-    <lastmod>2022-01-06T12:53:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/tags/java/</loc>
-    <lastmod>2022-01-06T12:53:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://func.fun/tags/leetcode/</loc>
     <lastmod>2022-01-06T12:53:31+08:00</lastmod>
   </url>
   
