@@ -3,52 +3,67 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <loc>https://func.fun/posts/977.squares-of-a-sorted-array/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/array/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/array-operation/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/double-pointer/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/java/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/leetcode/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/posts/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/simple/</loc>
-    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://func.fun/tags/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/posts/844.backspace-string-compare/</loc>
+    <lastmod>2022-01-22T01:20:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/posts/283.move-zeroes/</loc>
+    <lastmod>2022-01-22T01:10:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</loc>
     <lastmod>2022-01-21T17:40:51+08:00</lastmod>
   </url>
   

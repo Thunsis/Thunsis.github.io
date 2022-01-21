@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 17:40:51 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jan 2022 01:34:51 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>977.squares-of-a-sorted-array</title>
+      <link>https://func.fun/posts/977.squares-of-a-sorted-array/</link>
+      <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/977.squares-of-a-sorted-array/</guid>
+      <description>Description 力扣 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[</description>
+    </item>
+    
+    <item>
+      <title>844.backspace-string-compare</title>
+      <link>https://func.fun/posts/844.backspace-string-compare/</link>
+      <pubDate>Sat, 22 Jan 2022 01:20:29 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/844.backspace-string-compare/</guid>
+      <description>Description 力扣 给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。 如果相等，返回 true ；否则，返回 false 。 注意</description>
+    </item>
+    
+    <item>
+      <title>283.move-zeroes</title>
+      <link>https://func.fun/posts/283.move-zeroes/</link>
+      <pubDate>Sat, 22 Jan 2022 01:10:08 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/283.move-zeroes/</guid>
+      <description>Description 力扣 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明: 必须在原数组上操作</description>
+    </item>
+    
     <item>
       <title>26.remove-duplicates-from-sorted-array</title>
       <link>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</link>
@@ -69,26 +96,6 @@
       
       <guid>https://func.fun/posts/704.binary-search/</guid>
       <description>Description 力扣 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1:</description>
-    </item>
-    
-    <item>
-      <title>How to handle mutiple git accounts in same laptop</title>
-      <link>https://func.fun/posts/mutiple_gits/</link>
-      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
-      
-      <guid>https://func.fun/posts/mutiple_gits/</guid>
-      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
-You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
-    </item>
-    
-    <item>
-      <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
-      <link>https://func.fun/posts/blog_setup/</link>
-      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
-      
-      <guid>https://func.fun/posts/blog_setup/</guid>
-      <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
-We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
     </item>
     
   </channel>
