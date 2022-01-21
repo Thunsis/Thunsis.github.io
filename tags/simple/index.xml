@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>leetcode on funcfun</title>
-    <link>https://func.fun/tags/leetcode/</link>
-    <description>Recent content in leetcode on funcfun</description>
+    <title>simple on funcfun</title>
+    <link>https://func.fun/tags/simple/</link>
+    <description>Recent content in simple on funcfun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 16:18:51 +0800</lastBuildDate><atom:link href="https://func.fun/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jan 2022 16:18:51 +0800</lastBuildDate><atom:link href="https://func.fun/tags/simple/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>27.remove-element</title>
       <link>https://func.fun/posts/27.remove-element/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://func.fun/posts/27.remove-element/</guid>
       <description>Description 力扣 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外</description>
-    </item>
-    
-    <item>
-      <title>34.find-first-and-last-position-of-element-in-sorted-array</title>
-      <link>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</link>
-      <pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
-      
-      <guid>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</guid>
-      <description>Description 力扣 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 t</description>
     </item>
     
     <item>

@@ -7,13 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 13:25:31 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jan 2022 16:18:51 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>array</title>
       <link>https://func.fun/tags/array/</link>
-      <pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
+      <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
       
       <guid>https://func.fun/tags/array/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>array-operation</title>
+      <link>https://func.fun/tags/array-operation/</link>
+      <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/array-operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://func.fun/tags/java/</link>
+      <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://func.fun/tags/leetcode/</link>
+      <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>simple</title>
+      <link>https://func.fun/tags/simple/</link>
+      <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/simple/</guid>
       <description></description>
     </item>
     
@@ -27,20 +63,11 @@
     </item>
     
     <item>
-      <title>java</title>
-      <link>https://func.fun/tags/java/</link>
+      <title>medium</title>
+      <link>https://func.fun/tags/medium/</link>
       <pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
       
-      <guid>https://func.fun/tags/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>leetcode</title>
-      <link>https://func.fun/tags/leetcode/</link>
-      <pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
-      
-      <guid>https://func.fun/tags/leetcode/</guid>
+      <guid>https://func.fun/tags/medium/</guid>
       <description></description>
     </item>
     
