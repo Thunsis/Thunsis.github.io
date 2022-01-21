@@ -6,8 +6,112 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Fri, 21 Jan 2022 16:18:51 +0800</lastBuildDate>
+		<lastBuildDate>Fri, 21 Jan 2022 17:40:51 +0800</lastBuildDate>
 		<atom:link href="https://func.fun/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>26.remove-duplicates-from-sorted-array</title>
+			<link>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</link>
+			<pubDate>Fri, 21 Jan 2022 17:40:51 +0800</pubDate>
+			
+			<guid>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</guid>
+			<description>Description 力扣 给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。 不要使用额外的数组空间，你必须在 原地 修改</description>
+			<content type="html"><![CDATA[<h2 id="description">Description</h2>
+<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">力扣</a></p>
+<pre><code>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
+
+不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+
+ 
+
+说明:
+
+为什么返回数值是整数，但输出的答案是数组呢?
+
+请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
+
+你可以想象内部操作如下:
+
+// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
+int len = removeDuplicates(nums);
+
+// 在函数里修改输入数组对于调用者是可见的。
+// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
+for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}
+ 
+示例 1：
+
+输入：nums = [1,1,2]
+输出：2, nums = [1,2]
+解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。
+示例 2：
+
+输入：nums = [0,0,1,1,1,2,2,3,3,4]
+输出：5, nums = [0,1,2,3,4]
+解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
+ 
+
+提示：
+
+0 &lt;= nums.length &lt;= 3 * 104
+-104 &lt;= nums[i] &lt;= 104
+nums 已按升序排列
+</code></pre><h2 id="solution">Solution</h2>
+<ol>
+<li>首先注意数组为空时的判断。</li>
+<li>是<a href="https://func.fun/posts/27.remove-element/">27.remove-element</a>的进阶版，区别在于<strong>27</strong>为nums[i]和目标值做比较，<strong>26</strong>为nums[i]和nums[j]做比较。</li>
+</ol>
+<h3 id="双指针法">双指针法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+            <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]){</span>
+                <span class="n">nums</span><span class="o">[++</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="o">++</span><span class="n">j</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h2 id="notice-points">Notice points</h2>
+<ol>
+<li><code>return i++</code> 等同于</li>
+</ol>
+<pre><code>int temp = i;
+i = i + 1;
+return temp;
+</code></pre><ol start="2">
+<li><code>return ++i</code> 等同于</li>
+</ol>
+<pre><code>i = i + 1;
+return i;
+</code></pre><ul>
+<li>i++ 返回原来的值（临时变量），++i 返回加1后的值。</li>
+<li>i++ 不能作为左值，而++i 可以。左值是对应内存中有确定存储地址的对象的表达式的值，而右值是所有不是左值的表达式的值。</li>
+</ul>
+<p>实现方法：</p>
+<pre><code>// 前缀形式： 
+int&amp; int::operator++() //这里返回的是一个引用形式，就是说函数返回值也可以作为一个左值使用 
+{//函数本身无参，意味着是在自身空间内增加1的 
+	*this += 1; // 增加 
+	return *this; // 取回值 
+} 
+
+//后缀形式: 
+const int int::operator++(int) //函数返回值是一个非左值型的，与前缀形式的差别所在。 
+{//函数带参，说明有另外的空间开辟 
+	int oldValue = *this; // 取回值 
+	++(*this); // 增加 
+	return oldValue; // 返回被取回的值 
+}
+
+</code></pre>]]></content>
+		</item>
 		
 		<item>
 			<title>27.remove-element</title>
@@ -63,22 +167,20 @@ for (int i = 0; i &lt; len; i++) {
 0 &lt;= val &lt;= 100
 </code></pre><h2 id="solution">Solution</h2>
 <ol>
-<li>数组是由连续的存储单元，所以不能直接删除，只能覆盖。</li>
+<li>数组是由连续的存储单元组成的，所以不能直接删除，只能覆盖。</li>
 <li>另外要求存储空间为O(1)，所以需要在数组本身进行覆盖。</li>
 <li>很多算法都可以首先考虑一下暴力接法，但我更倾向于直面每道题考查的知识点，这个过程不是为了做题，而是为了学解题技巧。</li>
 </ol>
 <h3 id="双指针法">双指针法</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-             <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">val</span><span class="o">){</span>
-                 <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-                 <span class="n">j</span><span class="o">++;</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="k">return</span> <span class="n">j</span><span class="o">;</span>
-    <span class="o">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">val</span><span class="o">){</span>
+                <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="o">++</span><span class="n">j</span><span class="o">;</span>
+	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>]]></content>
 		</item>
