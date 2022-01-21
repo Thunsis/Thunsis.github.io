@@ -95,22 +95,22 @@ return i;
 <li>i++ 不能作为左值，而++i 可以。左值是对应内存中有确定存储地址的对象的表达式的值，而右值是所有不是左值的表达式的值。</li>
 </ul>
 <p>实现方法：</p>
-<pre><code>// 前缀形式： 
-int&amp; int::operator++() //这里返回的是一个引用形式，就是说函数返回值也可以作为一个左值使用 
-{//函数本身无参，意味着是在自身空间内增加1的 
-	*this += 1; // 增加 
-	return *this; // 取回值 
-} 
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 前缀形式： 
+</span><span class="c1"></span><span class="kt">int</span><span class="o">&amp;</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="c1">//这里返回的是一个引用形式，就是说函数返回值也可以作为一个左值使用 
+</span><span class="c1"></span><span class="p">{</span><span class="c1">//函数本身无参，意味着是在自身空间内增加1的 
+</span><span class="c1"></span>    <span class="o">*</span><span class="k">this</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 增加 
+</span><span class="c1"></span>    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
+</span><span class="c1"></span><span class="p">}</span> 
 
-//后缀形式: 
-const int int::operator++(int) //函数返回值是一个非左值型的，与前缀形式的差别所在。 
-{//函数带参，说明有另外的空间开辟 
-	int oldValue = *this; // 取回值 
-	++(*this); // 增加 
-	return oldValue; // 返回被取回的值 
-}
+<span class="c1">//后缀形式: 
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="c1">//函数返回值是一个非左值型的，与前缀形式的差别所在。 
+</span><span class="c1"></span><span class="p">{</span><span class="c1">//函数带参，说明有另外的空间开辟 
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
+</span><span class="c1"></span>    <span class="o">++</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span> <span class="c1">// 增加 
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">oldValue</span><span class="p">;</span> <span class="c1">// 返回被取回的值 
+</span><span class="c1"></span><span class="p">}</span>
 
-</code></pre>]]></content>
+</code></pre></div>]]></content>
 		</item>
 		
 		<item>
