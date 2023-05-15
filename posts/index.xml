@@ -15,10 +15,9 @@
 			<pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
 			
 			<guid>https://func.fun/posts/click-rate-drops-investigate/</guid>
-			<description>Click Rate Drops Investigate Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
-select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.</description>
-			<content type="html"><![CDATA[<h1 id="click-rate-drops-investigate">Click Rate Drops Investigate</h1>
-<h2 id="customer-concerns">Customer concerns</h2>
+			<description>Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a.</description>
+			<content type="html"><![CDATA[<h2 id="customer-concerns">Customer concerns</h2>
 <p>Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
@@ -1136,12 +1135,12 @@ jobs:
 </code></pre><p>Now we push it into repo.</p>
 <pre tabindex="0"><code>cd public
 git init
-git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
 git config user.name &#34;self_github_account_name&#34;
 git config user.email SelfEmailNameA@xxx.com
-git pull
-git checkout master
+git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
 git branch --set-upstream-to=origin/master
+git checkout -b master
+git pull
 git add .
 git commit -a -m &#39;my blog&#39;
 git push -u origin master
