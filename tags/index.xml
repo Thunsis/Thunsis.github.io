@@ -7,31 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 22 Jan 2022 01:34:51 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>trouble-shooting</title>
+      <link>https://func.fun/tags/trouble-shooting/</link>
+      <pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/trouble-shooting/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>array</title>
       <link>https://func.fun/tags/array/</link>
       <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
       
       <guid>https://func.fun/tags/array/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>array-operation</title>
-      <link>https://func.fun/tags/array-operation/</link>
-      <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
-      
-      <guid>https://func.fun/tags/array-operation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>double-pointer</title>
-      <link>https://func.fun/tags/double-pointer/</link>
-      <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
-      
-      <guid>https://func.fun/tags/double-pointer/</guid>
       <description></description>
     </item>
     
@@ -59,6 +50,15 @@
       <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
       
       <guid>https://func.fun/tags/simple/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>two-pointers</title>
+      <link>https://func.fun/tags/two-pointers/</link>
+      <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/two-pointers/</guid>
       <description></description>
     </item>
     

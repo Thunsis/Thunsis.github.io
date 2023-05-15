@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 22 Jan 2022 01:34:51 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Click Rate Drops Investigate</title>
+      <link>https://func.fun/posts/click-rate-drops-investigate/</link>
+      <pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/click-rate-drops-investigate/</guid>
+      <description>Click Rate Drops Investigate Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.</description>
+    </item>
+    
     <item>
       <title>977.squares-of-a-sorted-array</title>
       <link>https://func.fun/posts/977.squares-of-a-sorted-array/</link>
@@ -68,7 +78,7 @@
       <pubDate>Wed, 19 Jan 2022 16:24:51 +0800</pubDate>
       
       <guid>https://func.fun/about/</guid>
-      <description>Bachelor of Computer Science from South China University of Technology. 4 years of big data processing experience in Marketing domain of e-commerce company. Proficient in SQL, Scala language, Spark, building ETL pipeline and data model design.  Please feel free to contact me at hexuanr@126.com.</description>
+      <description>Bachelor of Computer Science from South China University of Technology. 4 years of big data processing experience in Marketing domain of e-commerce company. Proficient in SQL, Scala language, Spark, building ETL pipeline and data model design. Please feel free to contact me at hexuanr@126.com.</description>
     </item>
     
     <item>
@@ -87,15 +97,6 @@
       
       <guid>https://func.fun/posts/35.search-insert-position/</guid>
       <description>Description 力扣 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间</description>
-    </item>
-    
-    <item>
-      <title>704.binary-search</title>
-      <link>https://func.fun/posts/704.binary-search/</link>
-      <pubDate>Wed, 08 Dec 2021 12:25:36 +0800</pubDate>
-      
-      <guid>https://func.fun/posts/704.binary-search/</guid>
-      <description>Description 力扣 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1:</description>
     </item>
     
   </channel>

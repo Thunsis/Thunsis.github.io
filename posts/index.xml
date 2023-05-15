@@ -6,8 +6,230 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sat, 22 Jan 2022 01:34:51 +0800</lastBuildDate>
+		<lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate>
 		<atom:link href="https://func.fun/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Click Rate Drops Investigate</title>
+			<link>https://func.fun/posts/click-rate-drops-investigate/</link>
+			<pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
+			
+			<guid>https://func.fun/posts/click-rate-drops-investigate/</guid>
+			<description>Click Rate Drops Investigate Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.</description>
+			<content type="html"><![CDATA[<h1 id="click-rate-drops-investigate">Click Rate Drops Investigate</h1>
+<h2 id="customer-concerns">Customer concerns</h2>
+<p>Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">SENT_DT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">CHNL_TRCKNG_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">CHNL_TRCKNG_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/B28C6262-C71B-4525-B804-6B73AE3D5C25_2/QU2S2rthRNIYesKrbbmiQyKh0vdKi3hzjxNmVd6Pkz4z/image001.png" alt="image001.png"></p>
+<h2 id="why-we-are-involved-in">Why we are involved in?</h2>
+<ol>
+<li>User are querying our table and think data is abnormal.</li>
+<li>Even though customer directly found Tracking team, Tracking team insisted they already fixed VOD issue and suspect it is a reporting issue.</li>
+</ol>
+<h2 id="what-do-we-need-to-do">What do we need to do?</h2>
+<p>Prove it is not a reporting issue.</p>
+<h2 id="how-can-we-achive-this">How can we achive this?</h2>
+<p>We have 2 directions:</p>
+<ol>
+<li>Since customr are asking upstream tracking team, we only need to prove our data is consistant with upstream.</li>
+<li>Explain the “drops” are reasonable and not an issue.</li>
+</ol>
+<p>Obviously the second choice is more abstract and it is supposed to be done by tracking team, so we&rsquo;d better only to do option #1.</p>
+<p>But I want do full deepdive since we are summarizing experiences.</p>
+<h3 id="grouping-by-action-date">Grouping by action date</h3>
+<p>The click rate trend grouping by action date is as expected. 27th Apr to 3th May, click has 20% unrecoverable loss due to VOD issue.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">MH_EVENT_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">MH_EVENT_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="o">/</span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> </span><span class="c1">------ pls use ACTN_DT instead of sent_dt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- and a.sent_dt &gt;= &#39;2023-04-15&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/F7F86972-641B-4D42-84F6-A48E202F5B1E_2/FsqEHY8nYAqbh3Qk4y2H3iyK3Uaw1xrCxsO9v6PccxIz/image002.png" alt="image002.png"></p>
+<h3 id="grouping-by-sent-date">Grouping by sent date</h3>
+<p>We guess the click rate grouping by sent date drops in recently days is because click and send has max 90 days window, but we just sent them for a few days.</p>
+<p>But we need to prove it by exact truth.</p>
+<p>From following code and chart whose max sent date is 9th May, we can select sent date and action date diffs, taking 11401 for example:</p>
+<p>by chosing 0, the click rate is stable and avg is 8%, approximate to click rate of 9th May</p>
+<p>by chosing 1, the click rate is stable and avg is 14%, approximate to click rate of 8th May</p>
+<p>…</p>
+<p>So the analyst saw drops is reasonable.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">datediff</span><span class="p">(</span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="p">,</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_dt</span><span class="p">)</span><span class="w"> </span><span class="n">diff</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">clicks</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="n">CLICKS</span><span class="p">)</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">sum_clicks</span><span class="p">,</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sends</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">sum_clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">clicks</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">join</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="w">
+</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/54980083-80C4-4004-AA9A-0F8D1F93E017_2/gHLyfTHUWXx4SSxabEwx5VtAnICaLuGkKyXEd2G9I0wz/Snipaste_2023-05-12_16-21-59.png" alt="Snipaste_2023-05-12_16-21-59.png"></p>
+<p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A23B83EE-1ED4-4E5F-96D6-666B00B187E1_2/hf1XVNW3SHLIIXay2snIaXJL36U0dhLogyxmVLCDK8Iz/Snipaste_2023-05-12_16-26-16.png" alt="Snipaste_2023-05-12_16-26-16.png"></p>
+<h3 id="compare-with-upstream-table">Compare with upstream table</h3>
+<p>I also tried to compare clicks count with upstream table both grouping by action date, the trend matches.</p>
+<p>But count diff rate dropped between 2nd May and 7th May then recovered on 9th May, it is weird but abviously not our reporting issue since it back to nornal automatically and I did not spent much time on this.</p>
+<p>Keep monitoring is also a good way to saving effort.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">coalesce</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;typeid&#39;</span><span class="p">],</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">is_bigint</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">replace</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;.mle&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">replace</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;.mle&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">email_type_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="n">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;session_start_dt&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">event_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">event_dt</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ACTION_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ACTION_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">CHOCO_DATA_V</span><span class="p">.</span><span class="n">UTP_DAILY</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">EVENT_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;session_start_dt&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">ACTION_TYPE</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">CHANNEL_TYPE</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">coalesce</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;typeid&#39;</span><span class="p">],</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">is_bigint</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">replace</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;.mle&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">replace</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;.mle&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;dup_flag&#39;</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A8F4F2DB-AF83-45B2-BC99-739289716733_2/kZlOtxyBdJCdcOfZL5QEPKpxwx2h8Atm8fFxZfbOZoIz/image003.png" alt="image003.png"></p>
+<p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/7D41D503-E745-457F-AE6A-489D89F17A2F_2/quAHMEwWikNSpDO7ptLEx8PjSQD2uyu7unqj5Glq5OYz/RE_%20Still%20have%20issue%20after%20P1%20VOD%20click%20loss%20Firewall%20issue%20resolved%20on%20May%203rd.eml">RE_ Still have issue after P1 VOD click loss Firewall issue resolved on May 3rd.eml</a></p>
+<p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/1ACA0FBA-E46B-4638-BEF2-34C34C05E73E_2/JZqGglhzUPMt8yFMWrFgrUH0WEC8dwLlHNByxP7R4lIz/View%20Order%20Details%20VOD%20Click%20Capture%20Loss%20Due%20to%20Firewall%20Issue.eml">View Order Details (VOD) Click Capture Loss Due to Firewall Issue.eml</a></p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>977.squares-of-a-sorted-array</title>
@@ -18,7 +240,7 @@
 			<description>Description 力扣 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">力扣</a></p>
-<pre><code>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
+<pre tabindex="0"><code>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
 
  
 
@@ -44,34 +266,33 @@ nums 已按 非递减顺序 排序
 进阶：
 
 请你设计时间复杂度为 O(n) 的算法解决本问题
-
 </code></pre><h2 id="solution">Solution</h2>
 <ol>
 <li>利用有序的地方来提高效率，中间确实有分割点，但是不妨从两端着手，最大值肯定在两端，对应新数组的最后一位，然后依次往前推。</li>
 <li>这里有有个困惑点，担心<code>j--</code>为-1，后来发现其实无所谓，最后虽然会变为-1，但是循环也就终止了，不会去给res[-1]赋值。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sortedSquares</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">leftSquare</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">*</span> <span class="n">nums</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">rightSquare</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">*</span> <span class="n">nums</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">leftSquare</span> <span class="o">&gt;</span> <span class="n">rightSquare</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">res</span><span class="o">[</span><span class="n">j</span><span class="o">--]</span> <span class="o">=</span> <span class="n">leftSquare</span><span class="o">;</span>
-                <span class="n">left</span><span class="o">++;</span>
-                
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">res</span><span class="o">[</span><span class="n">j</span><span class="o">--]</span> <span class="o">=</span> <span class="n">rightSquare</span><span class="o">;</span>
-                <span class="n">right</span><span class="o">--;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sortedSquares</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">leftSquare</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">*</span> <span class="n">nums</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">rightSquare</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">*</span> <span class="n">nums</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">leftSquare</span> <span class="o">&gt;</span> <span class="n">rightSquare</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="o">[</span><span class="n">j</span><span class="o">--]</span> <span class="o">=</span> <span class="n">leftSquare</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="o">[</span><span class="n">j</span><span class="o">--]</span> <span class="o">=</span> <span class="n">rightSquare</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span><span class="o">--;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -83,7 +304,7 @@ nums 已按 非递减顺序 排序
 			<description>Description 力扣 给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。 如果相等，返回 true ；否则，返回 false 。 注意</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/backspace-string-compare/">力扣</a></p>
-<pre><code>给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。
+<pre tabindex="0"><code>给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。
 
 如果相等，返回 true ；否则，返回 false 。
 
@@ -93,22 +314,22 @@ nums 已按 非递减顺序 排序
 
 示例 1：
 
-输入：s = &quot;ab#c&quot;, t = &quot;ad#c&quot;
+输入：s = &#34;ab#c&#34;, t = &#34;ad#c&#34;
 输出：true
 解释：S 和 T 都会变成 “ac”。
 示例 2：
 
-输入：s = &quot;ab##&quot;, t = &quot;c#d#&quot;
+输入：s = &#34;ab##&#34;, t = &#34;c#d#&#34;
 输出：true
 解释：s 和 t 都会变成 “”。
 示例 3：
 
-输入：s = &quot;a##c&quot;, t = &quot;#a#c&quot;
+输入：s = &#34;a##c&#34;, t = &#34;#a#c&#34;
 输出：true
 解释：s 和 t 都会变成 “c”。
 示例 4：
 
-输入：s = &quot;a#c&quot;, t = &quot;b&quot;
+输入：s = &#34;a#c&#34;, t = &#34;b&#34;
 输出：false
 解释：s 会变成 “c”，但 t 仍然是 “b”。
  
@@ -116,41 +337,40 @@ nums 已按 非递减顺序 排序
 提示：
 
 1 &lt;= s.length, t.length &lt;= 200
-s 和 t 只含有小写字母以及字符 '#'
+s 和 t 只含有小写字母以及字符 &#39;#&#39;
  
 
 进阶：
 
 你可以用 O(N) 的时间复杂度和 O(1) 的空间复杂度解决该问题吗？
  
-
 </code></pre><h2 id="solution">Solution</h2>
 <ol>
 <li>在<a href="https://func.fun/posts/27.remove-element/">27.remove-element</a>的基础上遇到 <em>#</em> 指针回退一步。然后截取有效区间。</li>
 <li>在边界上思考了很久，更新ch[j-1]的值其实就是一种删除。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">backspaceCompare</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">String</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">backspace</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">backspace</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">backspace</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ch</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="s">&#34;#&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">ch</span><span class="o">[</span><span class="n">i</span><span class="o">])))</span> <span class="o">{</span>
-                <span class="n">ch</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span> <span class="o">=</span> <span class="n">ch</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">j</span><span class="o">--;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-    	<span class="o">}</span>
-        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">ch</span><span class="o">).</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id="notice-points">Notice Points</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">backspaceCompare</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">String</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s</span> <span class="o">=</span> <span class="n">backspace</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="n">backspace</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">backspace</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span><span class="o">[]</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ch</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span><span class="s">&#34;#&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">ch</span><span class="o">[</span><span class="n">i</span><span class="o">])))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ch</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span> <span class="o">=</span> <span class="n">ch</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="o">(</span><span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">j</span><span class="o">--;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">ch</span><span class="o">).</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="notice-points">Notice Points</h2>
 <ol>
 <li>字符串转数组：<code>char[] ch = s.toCharArray();</code></li>
 <li>Char类型数组的值和String对比：<code>String.valueOf(ch[i])</code></li>
@@ -168,7 +388,7 @@ s 和 t 只含有小写字母以及字符 '#'
 			<description>Description 力扣 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明: 必须在原数组上操作</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/classic/problems/move-zeroes">力扣</a></p>
-<pre><code>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+<pre tabindex="0"><code>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
 示例:
 
@@ -183,23 +403,23 @@ s 和 t 只含有小写字母以及字符 '#'
 <li>在 <a href="https://func.fun/posts/27.remove-element/">27.remove-element</a> 的基础上给后面加0。</li>
 <li>for循环的第一个分号后面的部分第一轮不执行。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moveZeroes</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">nums</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">for</span> <span class="o">(;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moveZeroes</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">nums</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -211,7 +431,7 @@ s 和 t 只含有小写字母以及字符 '#'
 			<description>Description 力扣 给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。 不要使用额外的数组空间，你必须在 原地 修改</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">力扣</a></p>
-<pre><code>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
+<pre tabindex="0"><code>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
 
 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
 
@@ -257,53 +477,52 @@ nums 已按升序排列
 <li>是<a href="https://func.fun/posts/27.remove-element/">27.remove-element</a>的进阶版，区别在于<strong>27</strong>为nums[i]和目标值做比较，<strong>26</strong>为nums[i]和nums[j]做比较。</li>
 </ol>
 <h3 id="双指针法">双指针法</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
-            <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]){</span>
-                <span class="n">nums</span><span class="o">[++</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="o">++</span><span class="n">j</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id="notice-points">Notice points</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">==</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">nums</span><span class="o">[++</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="n">j</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="notice-points">Notice points</h2>
 <ol>
 <li><code>return i++</code> 等同于</li>
 </ol>
-<pre><code>int temp = i;
+<pre tabindex="0"><code>int temp = i;
 i = i + 1;
 return temp;
 </code></pre><ol start="2">
 <li><code>return ++i</code> 等同于</li>
 </ol>
-<pre><code>i = i + 1;
+<pre tabindex="0"><code>i = i + 1;
 return i;
 </code></pre><ul>
 <li>i++ 返回原来的值（临时变量），++i 返回加1后的值。</li>
 <li>i++ 不能作为左值，而++i 可以。左值是对应内存中有确定存储地址的对象的表达式的值，而右值是所有不是左值的表达式的值。</li>
 </ul>
 <p>实现方法：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 前缀形式： 
-</span><span class="c1"></span><span class="kt">int</span><span class="o">&amp;</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="c1">//这里返回的是一个引用形式，就是说函数返回值也可以作为一个左值使用 
-</span><span class="c1"></span><span class="p">{</span><span class="c1">//函数本身无参，意味着是在自身空间内增加1的 
-</span><span class="c1"></span>    <span class="o">*</span><span class="k">this</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 增加 
-</span><span class="c1"></span>    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
-</span><span class="c1"></span><span class="p">}</span> 
-
-<span class="c1">//后缀形式: 
-</span><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="c1">//函数返回值是一个非左值型的，与前缀形式的差别所在。 
-</span><span class="c1"></span><span class="p">{</span><span class="c1">//函数带参，说明有另外的空间开辟 
-</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
-</span><span class="c1"></span>    <span class="o">++</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span> <span class="c1">// 增加 
-</span><span class="c1"></span>    <span class="k">return</span> <span class="n">oldValue</span><span class="p">;</span> <span class="c1">// 返回被取回的值 
-</span><span class="c1"></span><span class="p">}</span>
-
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 前缀形式： 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span><span class="o">&amp;</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="c1">//这里返回的是一个引用形式，就是说函数返回值也可以作为一个左值使用 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span><span class="c1">//函数本身无参，意味着是在自身空间内增加1的 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="k">this</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 增加 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//后缀形式: 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="kt">int</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="c1">//函数返回值是一个非左值型的，与前缀形式的差别所在。 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span><span class="c1">//函数带参，说明有另外的空间开辟 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// 取回值 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">++</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span> <span class="c1">// 增加 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">oldValue</span><span class="p">;</span> <span class="c1">// 返回被取回的值 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -315,7 +534,7 @@ return i;
 			<description>Description 力扣 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/remove-element/">力扣</a></p>
-<pre><code>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+<pre tabindex="0"><code>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
 
 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
 
@@ -365,19 +584,19 @@ for (int i = 0; i &lt; len; i++) {
 <li>很多算法都可以首先考虑一下暴力接法，但我更倾向于直面每道题考查的知识点，这个过程不是为了做题，而是为了学解题技巧。</li>
 </ol>
 <h3 id="双指针法">双指针法</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">val</span><span class="o">){</span>
-                <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-                <span class="n">j</span><span class="o">++;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">j</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">val</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">j</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -389,7 +608,7 @@ for (int i = 0; i &lt; len; i++) {
 			<description>Description 力扣 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 t</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">力扣</a></p>
-<pre><code>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
+<pre tabindex="0"><code>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
 
 如果数组中不存在目标值 target，返回 [-1, -1]。
 
@@ -449,81 +668,80 @@ nums 是一个非递减数组
 <li>return leftBorder+1 = 4 or leftBorder = 4</li>
 </ul>
 <h3 id="简单法">简单法</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-
-    <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">getRightBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">getLeftBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">==</span> <span class="o">-</span><span class="n">2</span> <span class="o">||</span> <span class="n">leftBorder</span> <span class="o">==</span> <span class="o">-</span><span class="n">2</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="n">1</span><span class="o">,-</span><span class="n">1</span><span class="o">};</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">-</span> <span class="n">leftBorder</span> <span class="o">&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">leftBorder</span><span class="o">+</span><span class="n">1</span><span class="o">,</span> <span class="n">rightBorder</span><span class="o">-</span><span class="n">1</span><span class="o">};</span> 
-        <span class="k">else</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="n">1</span><span class="o">,-</span><span class="n">1</span><span class="o">};</span>
-    <span class="o">}</span>
-    
-
-    <span class="kt">int</span> <span class="nf">getRightBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="o">-</span><span class="n">2</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-                <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">rightBorder</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kt">int</span> <span class="nf">getLeftBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="o">-</span><span class="n">2</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-                <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">leftBorder</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">};</span>
-
-</code></pre></div><h3 id="复杂法">复杂法</h3>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="n">1</span><span class="o">,</span> <span class="o">-</span><span class="n">1</span><span class="o">};</span>
-        <span class="n">res</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-        <span class="n">res</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="c1">//leftOrRight为true找左边界 false找右边界
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">leftOrRight</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">mid</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-            <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
-                <span class="c1">//处理target == nums[mid]
-</span><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">leftOrRight</span><span class="o">)</span>
-                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-                <span class="k">else</span>
-                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">getRightBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">getLeftBorder</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span> <span class="o">||</span> <span class="n">leftBorder</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rightBorder</span> <span class="o">-</span> <span class="n">leftBorder</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">leftBorder</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">rightBorder</span><span class="o">-</span><span class="mi">1</span><span class="o">};</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">getRightBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">rightBorder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">rightBorder</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">rightBorder</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">getLeftBorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">leftBorder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">leftBorder</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">leftBorder</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">};</span>
+</span></span></code></pre></div><h3 id="复杂法">复杂法</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">searchRange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//leftOrRight为true找左边界 false找右边界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">leftOrRight</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">mid</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//处理target == nums[mid]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span><span class="o">(</span><span class="n">leftOrRight</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -555,7 +773,7 @@ nums 是一个非递减数组
 			<description>Description 力扣 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/search-insert-position/">力扣</a></p>
-<pre><code>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+<pre tabindex="0"><code>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 
 请必须使用时间复杂度为 O(log n) 的算法。
 
@@ -602,52 +820,52 @@ nums 为无重复元素的升序排列数组
 <li>因为左右皆闭合，如果nums[middle] &lt;&gt; target, 左右需要加减1。</li>
 <li>如果数组里不存在，插入的位置为right加1。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">searchInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">right</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h3 id="左闭右开">左闭右开</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">searchInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="左闭右开">左闭右开</h3>
 <ol>
 <li>[left, right) -&gt; right 需要超出边界1位，所以left 从 第一个下标（0）开始，right 从最后一个下标+1开始（nums.length ）。</li>
 <li>left 和 right 不可能相等，所以while 条件里是 &lt;。</li>
 <li>因为左闭右开，如果nums[middle] &lt;&gt; target, 左需要加1，右不需要减1。</li>
 <li>如果数组里不存在，插入的位置为right。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">searchInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">right</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id="notice-points">Notice Points</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">searchInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">right</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="notice-points">Notice Points</h2>
 <p>和<a href="https://thunsis.github.io/posts/704.binary-search/">704.binary-search</a>的区别是多考虑了不在数组内的情况，在right的基础上，右闭加右开不加即可。
 在二分查找中，坚持循环区间开闭的不变量。</p>
 ]]></content>
@@ -662,7 +880,7 @@ nums 为无重复元素的升序排列数组
 			<description>Description 力扣 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1:</description>
 			<content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/binary-search/solution/">力扣</a></p>
-<pre><code>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
+<pre tabindex="0"><code>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
 
 
 示例 1:
@@ -694,72 +912,71 @@ nums 的每个元素都将在 [-9999, 9999]之间。
 <li>left 和 right 可能会相等，所以while 条件里是 &lt;=。</li>
 <li>因为左右皆闭合，如果nums[middle] &lt;&gt; target, 左右需要加减1。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span><span class="n">1</span> <span class="o">;</span>
-            <span class="o">}</span> 
-            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">};</span>
-</code></pre></div><h3 id="左闭右开">左闭右开</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span><span class="mi">1</span> <span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">};</span>
+</span></span></code></pre></div><h3 id="左闭右开">左闭右开</h3>
 <ol>
 <li>[left, right) -&gt; right 需要超出边界1位，所以left 从 第一个下标（0）开始，right 从最后一个下标+1开始（nums.length ）。</li>
 <li>left 和 right 不可能相等，所以while 条件里是 &lt;。</li>
 <li>因为左闭右开，如果nums[middle] &lt;&gt; target, 左需要加1，右不需要减1。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">){</span>
-            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">;</span>
-            <span class="o">}</span> 
-            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">};</span>
-</code></pre></div><h2 id="notice-points">Notice Points</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">middle</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">};</span>
+</span></span></code></pre></div><h2 id="notice-points">Notice Points</h2>
 <p>关于计算长度的几个方法</p>
 <ul>
 <li>length : <strong>Arrays</strong> (int[], double[], String[]) — 取得Array的长度</li>
 <li>length() : <strong>String related Object</strong>(String, StringBuilder, etc) — 取得字符串的长度</li>
 <li>size() : <strong>Collection Object</strong> (ArrayList, Set, etc) — 取得泛型集合大小</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span><span class="o">{</span>
-     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span><span class="n">args</span><span class="o">){</span>
-        <span class="n">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">};</span>
-        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;123456&#34;</span><span class="o">;</span>
-        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">();</span>
-        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;example&#34;</span><span class="o">);</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span> <span class="c1">//3
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">());</span> <span class="c1">//6
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span> <span class="c1">//1
-</span><span class="c1"></span>     <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div>]]></content>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span><span class="n">args</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;123456&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;example&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span> <span class="c1">//3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">());</span> <span class="c1">//6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span> <span class="c1">//1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -784,11 +1001,11 @@ SSH is a authorization tool. It is a bridge connecting mutiple network servers. 
 <h3 id="let-generate-ssh-keys-for-different-emails">Let generate ssh keys for different emails</h3>
 <p>Notice: email number = ssh key number
 If github and gitlab is registered by same email, then it can use same ssh key. Otherwise you are supposed to create new ssh keys and add them to website setting page accordingly.</p>
-<pre><code>ssh-keygen -t rsa -C &quot;CompanyEmailNameA@xxx.com&quot; -f ~/.ssh/company_name_rsa
-ssh-keygen -t rsa -C &quot;SelfEmailNameA@xxx.com&quot; -f ~/.ssh/self_name_rsa
+<pre tabindex="0"><code>ssh-keygen -t rsa -C &#34;CompanyEmailNameA@xxx.com&#34; -f ~/.ssh/company_name_rsa
+ssh-keygen -t rsa -C &#34;SelfEmailNameA@xxx.com&#34; -f ~/.ssh/self_name_rsa
 </code></pre><h3 id="update-different-ssh-keys-config">Update different ssh key’s config</h3>
 <p>Accounts of different website:</p>
-<pre><code>vi ~/.ssh/config
+<pre tabindex="0"><code>vi ~/.ssh/config
 
 Host self_name
 Hostname github.com
@@ -802,7 +1019,7 @@ PreferredAuthentications publickey
 IdentityFile ~/.ssh/self_name_rsa
 User self_gitlab_account_name
 </code></pre><p>Accounts of same website:</p>
-<pre><code>vi ~/.ssh/config
+<pre tabindex="0"><code>vi ~/.ssh/config
 
 Host company_name
 Hostname github.com
@@ -817,7 +1034,7 @@ IdentityFile ~/.ssh/self_name_rsa
 User self_github_account_name
 </code></pre><h3 id="copy-public-key-to-website-setting-page">Copy public key to website setting page</h3>
 <h2 id="git-config">Git config</h2>
-<pre><code>git config user.name &quot;self_github_account_name&quot;
+<pre tabindex="0"><code>git config user.name &#34;self_github_account_name&#34;
 git config user.email SelfEmailNameA@xxx.com
 </code></pre><p>That should be enough.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -837,17 +1054,20 @@ We used to search on the internet when we are facing issues. We keep digging and
 <p>I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.</p>
 <p>We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised. So I will always write original blogs, and don’t forget the initial purpose.</p>
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crazy..</p>
-<h2 id="install-hugo">Install <code>hugo</code></h2>
+<h2 id="install-brew">install brew</h2>
+<h3 id="brew">brew</h3>
+<pre tabindex="0"><code>/bin/bash -c &#34;$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)&#34;
+</code></pre><h2 id="install-hugo">Install <code>hugo</code></h2>
 <h3 id="hugo">hugo</h3>
-<pre><code>brew install hugo
+<pre tabindex="0"><code>brew install hugo
 </code></pre><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme</h2>
 <p>create main folder by hugo new command.</p>
-<pre><code>hugo new site your_site_name
+<pre tabindex="0"><code>hugo new site your_site_name
 </code></pre><p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
-<pre><code>cd your_site_name
+<pre tabindex="0"><code>cd your_site_name
 git clone https://github.com/Track3/hermit.git themes/hermit
 </code></pre><p>create some web pages in .md format, following commands will automatically generate subfolder names <em>posts</em> and <em>about</em>.</p>
-<pre><code>hugo new posts/my-first-post.md
+<pre tabindex="0"><code>hugo new posts/my-first-post.md
 hugo new about/about.md
 </code></pre><p>Ather this, hugo ducument says <code>hugo server -D</code>
 But I saw nothing when opened http://localhost:1313/.
@@ -858,29 +1078,29 @@ After a huge struggling, I finally saw the contents.</p>
 However, after I made change accordingly, website still is blank.</li>
 <li>Copy <code>config.toml</code>  from your <code>themes/theme_name/exampleSite</code>folder to your site main folder. And modify some customer settings, I am only listing necessary parts:</li>
 </ol>
-<pre><code>baseURL = &quot;https://Thunsis.github.io&quot;
+<pre tabindex="0"><code>baseURL = &#34;https://Thunsis.github.io&#34;
 # your github.io url
-theme = &quot;hermit&quot;
+theme = &#34;hermit&#34;
 # them name
 [menu]
 
   [[menu.main]]
-    name = &quot;Posts&quot;
-    url = &quot;posts/&quot;
+    name = &#34;Posts&#34;
+    url = &#34;posts/&#34;
     weight = 10
 
   [[menu.main]]
-    name = &quot;About&quot;
-    url = &quot;about/&quot;
+    name = &#34;About&#34;
+    url = &#34;about/&#34;
     weight = 20
 # menu stucture, need to be aligned with /content/ subfolders you created
 </code></pre><p>Now you can see the website by, congratulations!</p>
-<pre><code>hugo server -D
+<pre tabindex="0"><code>hugo server -D
 </code></pre><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
 <p>We have get blog ready in localhost, but there still a way to go.. Carry on!</p>
 <h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it</h3>
 <p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is an important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
-<pre><code>name: github pages
+<pre tabindex="0"><code>name: github pages
 
 on:
   push:
@@ -899,7 +1119,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: &#39;latest&#39;
           # extended: true
 
       - name: Build
@@ -912,18 +1132,18 @@ jobs:
           publish_dir: ./public
 </code></pre><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo</h3>
 <p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
-<pre><code>hugo
+<pre tabindex="0"><code>hugo
 </code></pre><p>Now we push it into repo.</p>
-<pre><code>cd public
+<pre tabindex="0"><code>cd public
 git init
-git remote add origin https://github.com/Thunsis/Thunsis.github.io.git
-git config user.name &quot;self_github_account_name&quot;
+git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
+git config user.name &#34;self_github_account_name&#34;
 git config user.email SelfEmailNameA@xxx.com
 git pull
 git checkout master
 git branch --set-upstream-to=origin/master
 git add .
-git commit -a -m 'my blog'
+git commit -a -m &#39;my blog&#39;
 git push -u origin master
 </code></pre><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
 <h2 id="conclusion">Conclusion</h2>
