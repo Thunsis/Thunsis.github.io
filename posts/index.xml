@@ -997,7 +997,7 @@ for example: a.github.com and b.github.com</li>
 <h2 id="ssh">SSH</h2>
 <p>In the beginning, there is a base knowledge we need to be aware of.
 SSH is a authorization tool. It is a bridge connecting mutiple network servers. And abviously if we want to update a git repo, a trusted connection is needed. So we need to use SSH to generate public key and private key, and copy public key to website setting page. And add basic information of website to .ssh/config. So that we are trusted and can continue doing pull or push operations.</p>
-<h3 id="let-generate-ssh-keys-for-different-emails">Let generate ssh keys for different emails</h3>
+<h3 id="lets-generate-ssh-keys-for-different-emails">Let&rsquo;s generate ssh keys for different emails</h3>
 <p>Notice: email number = ssh key number
 If github and gitlab is registered by same email, then it can use same ssh key. Otherwise you are supposed to create new ssh keys and add them to website setting page accordingly.</p>
 <pre tabindex="0"><code>ssh-keygen -t rsa -C &#34;CompanyEmailNameA@xxx.com&#34; -f ~/.ssh/company_name_rsa
