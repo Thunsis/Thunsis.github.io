@@ -1469,15 +1469,13 @@ jobs:
 </code></pre><p>Now we push it into repo.</p>
 <pre tabindex="0"><code>cd public
 git init
-git config user.name &#34;self_github_account_name&#34;
-git config user.email SelfEmailNameA@xxx.com
 git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
 git branch --set-upstream-to=origin/master
 git checkout -b master
 git pull
 git add .
 git commit -a -m &#39;my blog&#39;
-git push -u origin master
+git push
 </code></pre><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
 <h2 id="conclusion">Conclusion</h2>
 <h3 id="the-mosting-blocking-issues">The mosting blocking issues:</h3>
@@ -1493,8 +1491,8 @@ git add .
 git commit -m &#34;first commit&#34;
 git branch -M main
 git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/blog
-git push -u origin main
 git branch --set-upstream-to=origin/main 
+git push
 </code></pre>]]></content>
 		</item>
 		
