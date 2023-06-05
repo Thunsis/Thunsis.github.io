@@ -1485,7 +1485,17 @@ git push -u origin master
 <li>hugo document did not tell us to overwrite  <code>config.toml</code> by theme’s, which caused I can’t see the content.</li>
 <li>Muti github account issue(personal issue). But I have found best solution, will post another blog to summary that. I think it could be helpful by some people, because most of us have company github account and personal github account both on same laptop.</li>
 </ul>
-]]></content>
+<h2 id="sync-md-files-to-github">Sync .md files to github</h2>
+<p>create a repo names <em>blog</em>, then execute below commands as below:</p>
+<pre tabindex="0"><code>cd content
+git init
+git add .
+git commit -m &#34;first commit&#34;
+git branch -M main
+git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/blog
+git push -u origin main
+git branch --set-upstream-to=origin/main 
+</code></pre>]]></content>
 		</item>
 		
 	</channel>
