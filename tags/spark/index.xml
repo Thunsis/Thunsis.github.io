@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spark on funcfun</title>
+    <link>https://func.fun/tags/spark/</link>
+    <description>Recent content in spark on funcfun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 05 Jun 2023 09:59:23 +0800</lastBuildDate><atom:link href="https://func.fun/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark View Advanced Usage</title>
+      <link>https://func.fun/posts/spark-view-advanced-usage/</link>
+      <pubDate>Mon, 05 Jun 2023 09:59:23 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/spark-view-advanced-usage/</guid>
+      <description>View in spark is a powerful data layer, on which you can apply flexciable logics and control data visibility as well as orgnaize different sources together.
+I made lots of practice on view, it is worth to summarize the notice points on view advance usage. Before that, I did mutiple testing to make sure it is as correct as possible.
+Scope View not only could be a intermedia temporary code block, but also can be built permanently based on user requirements.</description>
+    </item>
+    
+  </channel>
+</rss>

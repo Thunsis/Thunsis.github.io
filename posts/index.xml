@@ -6,8 +6,345 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate>
+		<lastBuildDate>Mon, 05 Jun 2023 09:59:23 +0800</lastBuildDate>
 		<atom:link href="https://func.fun/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Spark View Advanced Usage</title>
+			<link>https://func.fun/posts/spark-view-advanced-usage/</link>
+			<pubDate>Mon, 05 Jun 2023 09:59:23 +0800</pubDate>
+			
+			<guid>https://func.fun/posts/spark-view-advanced-usage/</guid>
+			<description>View in spark is a powerful data layer, on which you can apply flexciable logics and control data visibility as well as orgnaize different sources together.
+I made lots of practice on view, it is worth to summarize the notice points on view advance usage. Before that, I did mutiple testing to make sure it is as correct as possible.
+Scope View not only could be a intermedia temporary code block, but also can be built permanently based on user requirements.</description>
+			<content type="html"><![CDATA[<p>View in spark is a powerful data layer, on which you can apply flexciable logics and control data visibility as well as orgnaize different sources together.</p>
+<p>I made lots of practice on view, it is worth to summarize the notice points on view advance usage. Before that, I did mutiple testing to make sure it is as correct as possible.</p>
+<h2 id="scope">Scope</h2>
+<p>View not only could be a intermedia temporary code block, but also can be built permanently based on user requirements.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- temporary view only effect in current session
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="p">[</span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="p">]</span><span class="w"> </span><span class="k">temporary</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">temp_v</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="p">...;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- permanent global view 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="p">[</span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="p">]</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">p_cm_v</span><span class="p">.</span><span class="n">global_v</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="p">...;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- drop permanent view
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">drop</span><span class="w"> </span><span class="p">[</span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="p">]</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">p_cm_v</span><span class="p">.</span><span class="n">global_v</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h2 id="column">Column</h2>
+<p>View just like a table having its own structure including name and column even isNullable option. Taking below ddl as example to show how the columns name and type are generated. So that we know how to keep them unchanged when rebuilding the view.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">p_cm_v</span><span class="p">.</span><span class="n">global_v</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">name_1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">age_1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sex_1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">birthday_1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">name_2</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">age_2</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sex_2</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">birthday_2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">table_a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">name_3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">age_3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sex_3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">birthday_3</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">table_b</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="name">Name</h3>
+<ol>
+<li>The name defining priority is based on position:  *_1 &gt; *_2 &gt; *_3 (event though name is undefined).</li>
+<li>If name is undefined, then name is sql state content, for example:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>col_name</th>
+<th>data_type</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CASE WHEN (1 = 1) THEN 1 ELSE 0 END</td>
+<td>int</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>col_name</th>
+<th>data_type</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAST(1 AS INT)</td>
+<td>int</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type">Type</h3>
+<ol>
+<li>Briefly, the type is the combination of *_2 and *_3 if it is valid combination, otherwise will throw error.</li>
+</ol>
+<p>In detail:</p>
+<p>In Spark 3.0, when inserting values ​​into table columns with different data types, type casting is performed according to the ANSI SQL standard. Some unreasonable type conversions (such as string to int and double to boolean) are not allowed.</p>
+<p>In Spark 2.4 and earlier, type conversions are allowed during table inserts as long as the type conversions are valid casts. When inserting an out-of-range value into an integer field, the low-order bits of the value are inserted (same as Java/Scala numeric type casts). For example, if 257 is inserted into a field of type Byte, the result is 1. This behavior is controlled by the option spark.sql.storeAssignmentPolicy, which defaults to &ldquo;ANSI&rdquo;. Setting this option to &ldquo;Legacy&rdquo; restores the previous behavior.</p>
+<p><a href="https://learn.microsoft.com/zh-cn/azure/databricks/release-notes/runtime/7.x-migration#sql-datasets-and-dataframe">https://learn.microsoft.com/zh-cn/azure/databricks/release-notes/runtime/7.x-migration#sql-datasets-and-dataframe</a></p>
+<p>When <code>spark.sql.storeAssignmentPolicy</code> is set to <code>ANSI</code>(which is the default value since Spark 3.0), Spark SQL complies with the ANSI store assignment rules on table insertions. The valid combinations of source and target data type in table insertions are given by the following table.</p>
+<table>
+<thead>
+<tr>
+<th><strong>SourceTarget</strong></th>
+<th><strong>Numeric</strong></th>
+<th><strong>String</strong></th>
+<th><strong>Date</strong></th>
+<th><strong>Timestamp</strong></th>
+<th><strong>Interval</strong></th>
+<th><strong>Boolean</strong></th>
+<th><strong>Binary</strong></th>
+<th><strong>Array</strong></th>
+<th><strong>Map</strong></th>
+<th><strong>Struct</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>String</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Interval</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Binary</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y*</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y*</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Struct</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y*</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-ansi-compliance#store-assignment">https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-ansi-compliance#store-assignment</a></p>
+<h3 id="isnullable">isNullable</h3>
+<ol>
+<li>Hardly be set in Spark-SQL, but when you define a column by hard code, it will be set as true automatically.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">as</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="n">info</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="p">...;</span><span class="w">
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>col_name</th>
+<th>data_type</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>age</td>
+<td>int not null</td>
+<td>null</td>
+</tr>
+<tr>
+<td>info</td>
+<td>map not null</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>It is an optional setting in Scala API.</li>
+</ol>
+<h2 id="performance-tuning-case">Performance Tuning Case</h2>
+<p>View is not same as table. The flexciable logic also would bring performance issue when being queried. Where is logic, where could be optimized.</p>
+<p>The initial version has performance issue when being queried in spark 2.3 because it envolved in <em>Broadcast Nested Loop Join.</em></p>
+<p>After analysing, we can join the full table and then filter the data.</p>
+<p>Before:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">access_views</span><span class="p">.</span><span class="n">mh_event_ep</span><span class="w"> </span><span class="k">as</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">pa_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">esp_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Nespresso&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">pa_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;PA&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">esp_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Espresso&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">other_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">email_type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">access_views</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">join</span><span class="w"> </span><span class="n">prs_restricted_v</span><span class="p">.</span><span class="n">msg_type_lkp</span><span class="w"> </span><span class="n">lkp</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">sent_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">start_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">end_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">actn_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">date_sub</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="c1">-- partition key
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">date_sub</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="c1">-- bussiness requested;
+</span></span></span></code></pre></div><p>After:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">access_views</span><span class="p">.</span><span class="n">mh_event_ep</span><span class="w"> </span><span class="k">as</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">pa_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">esp_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Nespresso&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">pa_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;PA&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">esp_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Espresso&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="k">size</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">array_intersect</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">canvas_msg_ids</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">other_msg_list</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">email_type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">access_views</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">join</span><span class="w"> </span><span class="n">prs_restricted_v</span><span class="p">.</span><span class="n">msg_type_lkp</span><span class="w"> </span><span class="n">lkp</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">end_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">date_sub</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">actn_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">date_sub</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="c1">-- partition key
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">date_sub</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="c1">-- bussiness requested
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_dt</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">start_dt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">lkp</span><span class="p">.</span><span class="n">end_dt</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Click Rate Drops Investigate</title>

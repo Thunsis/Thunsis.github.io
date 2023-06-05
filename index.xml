@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jun 2023 09:59:23 +0800</lastBuildDate><atom:link href="https://func.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark View Advanced Usage</title>
+      <link>https://func.fun/posts/spark-view-advanced-usage/</link>
+      <pubDate>Mon, 05 Jun 2023 09:59:23 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/spark-view-advanced-usage/</guid>
+      <description>View in spark is a powerful data layer, on which you can apply flexciable logics and control data visibility as well as orgnaize different sources together.
+I made lots of practice on view, it is worth to summarize the notice points on view advance usage. Before that, I did mutiple testing to make sure it is as correct as possible.
+Scope View not only could be a intermedia temporary code block, but also can be built permanently based on user requirements.</description>
+    </item>
+    
     <item>
       <title>Click Rate Drops Investigate</title>
       <link>https://func.fun/posts/click-rate-drops-investigate/</link>
@@ -88,15 +99,6 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp
       
       <guid>https://func.fun/posts/bind_domain/</guid>
       <description>添加2条域名解析： CNAME - @ - your.github.io CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾</description>
-    </item>
-    
-    <item>
-      <title>35.search-insert-position</title>
-      <link>https://func.fun/posts/35.search-insert-position/</link>
-      <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
-      
-      <guid>https://func.fun/posts/35.search-insert-position/</guid>
-      <description>Description 力扣 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间</description>
     </item>
     
   </channel>

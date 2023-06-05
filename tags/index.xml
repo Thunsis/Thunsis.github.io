@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jun 2023 09:59:23 +0800</lastBuildDate><atom:link href="https://func.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spark</title>
+      <link>https://func.fun/tags/spark/</link>
+      <pubDate>Mon, 05 Jun 2023 09:59:23 +0800</pubDate>
+      
+      <guid>https://func.fun/tags/spark/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>trouble-shooting</title>
       <link>https://func.fun/tags/trouble-shooting/</link>
@@ -86,15 +95,6 @@
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
       <guid>https://func.fun/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://func.fun/tags/hugo/</link>
-      <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
-      
-      <guid>https://func.fun/tags/hugo/</guid>
       <description></description>
     </item>
     
