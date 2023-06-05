@@ -5,8 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#FFFFFF">
-	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Click Rate Drops Investigate">
 <meta itemprop="description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
 select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39;SEND&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &#39;CLICK&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &gt;= &#39;2023-04-15&#39; and a."><meta itemprop="datePublished" content="2023-05-12T16:58:05+08:00" />
