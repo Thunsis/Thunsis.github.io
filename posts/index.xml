@@ -1082,18 +1082,15 @@ nums 是一个非递减数组
 		
 		<item>
 			<title>Bind github.io with your custom domain</title>
-			<link>https://func.fun/posts/bind_domain/</link>
+			<link>https://func.fun/posts/bind-domain/</link>
 			<pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
 			
-			<guid>https://func.fun/posts/bind_domain/</guid>
-			<description>添加2条域名解析： CNAME - @ - your.github.io CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾</description>
+			<guid>https://func.fun/posts/bind-domain/</guid>
+			<description>添加2条域名解析： 1. CNAME - @ - your.github.io 2. CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成</description>
 			<content type="html"><![CDATA[<ul>
 <li>添加2条域名解析：
-<ol>
-<li>CNAME - @ - your.github.io</li>
-<li>CNAME - www - your.github.io</li>
-</ol>
-</li>
+1. CNAME - @ - your.github.io
+2. CNAME - www - your.github.io</li>
 <li>在 <a href="https://github.com/Thunsis/Thunsis.github.io/settings/pages">你的网站仓库的设置里</a> 填写<strong>Custom domain</strong>
 为 你的域名（不加任何http(s)/www那种），解析完成后勾选<strong>Enforce HTTPS</strong>。</li>
 </ul>
@@ -1317,10 +1314,10 @@ nums 的每个元素都将在 [-9999, 9999]之间。
 		
 		<item>
 			<title>How to handle mutiple git accounts in same laptop</title>
-			<link>https://func.fun/posts/mutiple_gits/</link>
+			<link>https://func.fun/posts/mutiple-gits/</link>
 			<pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
 			
-			<guid>https://func.fun/posts/mutiple_gits/</guid>
+			<guid>https://func.fun/posts/mutiple-gits/</guid>
 			<description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
 You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
 			<content type="html"><![CDATA[<p>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.</p>
@@ -1380,10 +1377,10 @@ git config user.email SelfEmailNameA@xxx.com
 		
 		<item>
 			<title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
-			<link>https://func.fun/posts/blog_setup/</link>
+			<link>https://func.fun/posts/blog-setup/</link>
 			<pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
 			
-			<guid>https://func.fun/posts/blog_setup/</guid>
+			<guid>https://func.fun/posts/blog-setup/</guid>
 			<description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
 			<content type="html"><![CDATA[<h2 id="my-thoughts">My thoughts</h2>

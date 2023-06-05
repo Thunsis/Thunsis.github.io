@@ -94,11 +94,11 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp
     
     <item>
       <title>Bind github.io with your custom domain</title>
-      <link>https://func.fun/posts/bind_domain/</link>
+      <link>https://func.fun/posts/bind-domain/</link>
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
-      <guid>https://func.fun/posts/bind_domain/</guid>
-      <description>添加2条域名解析： CNAME - @ - your.github.io CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾</description>
+      <guid>https://func.fun/posts/bind-domain/</guid>
+      <description>添加2条域名解析： 1. CNAME - @ - your.github.io 2. CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成</description>
     </item>
     
   </channel>
