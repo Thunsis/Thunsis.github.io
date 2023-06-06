@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://func.fun/tags/bussiness/</loc>
+    <lastmod>2023-06-06T14:47:54+08:00</lastmod>
+  </url><url>
     <loc>https://func.fun/posts/</loc>
-    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
+    <lastmod>2023-06-06T14:47:54+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/</loc>
+    <lastmod>2023-06-06T14:47:54+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/posts/what-does-vp-care-about/</loc>
+    <lastmod>2023-06-06T14:47:54+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/</loc>
+    <lastmod>2023-06-06T14:47:54+08:00</lastmod>
   </url><url>
     <loc>https://func.fun/tags/spark/</loc>
     <lastmod>2023-06-05T09:59:23+08:00</lastmod>
   </url><url>
     <loc>https://func.fun/posts/spark-view-advanced-usage/</loc>
-    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
-  </url><url>
-    <loc>https://func.fun/tags/</loc>
-    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
-  </url><url>
-    <loc>https://func.fun/</loc>
     <lastmod>2023-06-05T09:59:23+08:00</lastmod>
   </url><url>
     <loc>https://func.fun/posts/click-rate-drops-investigate/</loc>
