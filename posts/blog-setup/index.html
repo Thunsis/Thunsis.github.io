@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
   <meta property="og:url" content="https://func.fun/posts/blog-setup/" />
-  <link rel="canonical" href="https://func.fun/posts/blog-setup/" /><link rel="apple-touch-icon" href="/logo.png" />
-  <link rel="icon" href="/logo.png" />
-  <link rel="shortcut" href="/logo.png" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
+  <link rel="canonical" href="https://func.fun/posts/blog-setup/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
 
   <script type="application/ld+json">
   {
@@ -44,7 +42,7 @@
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
   <meta name="description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
-  <meta property="og:locale" content="en-us" /><meta property="og:image" content="/logo.png" />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
   
 
   
@@ -224,8 +222,8 @@ However, after I made change accordingly, website still is blank.</li>
 <li>hugo document did not tell us to overwrite  <code>config.toml</code> by theme’s, which caused I can’t see the content.</li>
 <li>Muti github account issue(personal issue). But I have found best solution, will post another blog to summary that. I think it could be helpful by some people, because most of us have company github account and personal github account both on same laptop.</li>
 </ul>
-<h2 id="ps-sync-md-files-to-github">P.S. Sync .md files to github</h2>
-<p>create a repo names <em>blog</em>, then execute below commands as below:</p>
+<h2 id="ps1-sync-md-files-to-github">P.S.1 Sync .md files to github</h2>
+<p>create a repo names <code>blog</code>, then execute below commands as below:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd content
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git add .
@@ -234,7 +232,45 @@ However, after I made change accordingly, website still is blank.</li>
 </span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/blog
 </span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/main 
 </span></span><span style="display:flex;"><span>git push
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="ps2-change-to-use-yinyang-theme">P.S.2 Change to use yinyang theme</h2>
+<p>Clone theme(in your site root path).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git clone https://&lt;your_token&gt;@github.com/joway/hugo-theme-yinyang themes/yinyang
+</span></span></code></pre></div><p>Edit <code>config.toml</code>. for example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>baseURL = &#34;https://func.fun/&#34;
+</span></span><span style="display:flex;"><span>languageCode = &#34;en-us&#34;
+</span></span><span style="display:flex;"><span>title = &#34;Xuan&#34;
+</span></span><span style="display:flex;"><span>theme = &#34;yinyang&#34;
+</span></span><span style="display:flex;"><span>DefaultContentLanguage = &#34;cn&#34;
+</span></span><span style="display:flex;"><span>enableRobotsTXT = true
+</span></span><span style="display:flex;"><span>canonifyURLs = false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[markup]
+</span></span><span style="display:flex;"><span>  [markup.goldmark]
+</span></span><span style="display:flex;"><span>    [markup.goldmark.renderer]
+</span></span><span style="display:flex;"><span>      unsafe = true
+</span></span><span style="display:flex;"><span>  [markup.highlight]
+</span></span><span style="display:flex;"><span>    guessSyntax = true
+</span></span><span style="display:flex;"><span>    noClasses = true
+</span></span><span style="display:flex;"><span>    style = &#34;tango&#34;
+</span></span><span style="display:flex;"><span>    tabWidth = 2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[author]
+</span></span><span style="display:flex;"><span>  name = &#34;Xuan&#34;
+</span></span><span style="display:flex;"><span>  homepage = &#34;https://func.fun/&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[params]
+</span></span><span style="display:flex;"><span>headTitle = &#34;Xuan&#34;
+</span></span><span style="display:flex;"><span>description = &#34;Data is the air that company breathes.&#34;
+</span></span><span style="display:flex;"><span>lazyImage = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[params.socials]]
+</span></span><span style="display:flex;"><span>name = &#34;About Me&#34;
+</span></span><span style="display:flex;"><span>link = &#34;https://func.fun/about&#34;
+</span></span><span style="display:flex;"><span>[[params.socials]]
+</span></span><span style="display:flex;"><span>name = &#34;Github&#34;
+</span></span><span style="display:flex;"><span>link = &#34;https://github.com/thunsis&#34; 
+</span></span></code></pre></div><p>Also you can refer to <a href="https://github.com/joway/hugo-blog/blob/master/config.toml">developer config</a>.</p>
+
         </div>
 
         <div class="row middle-xs">

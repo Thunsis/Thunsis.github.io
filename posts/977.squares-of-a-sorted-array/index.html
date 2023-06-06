@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
   <meta property="og:url" content="https://func.fun/posts/977.squares-of-a-sorted-array/" />
-  <link rel="canonical" href="https://func.fun/posts/977.squares-of-a-sorted-array/" /><link rel="apple-touch-icon" href="/logo.png" />
-  <link rel="icon" href="/logo.png" />
-  <link rel="shortcut" href="/logo.png" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
+  <link rel="canonical" href="https://func.fun/posts/977.squares-of-a-sorted-array/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
 
   <script type="application/ld+json">
   {
@@ -44,7 +42,7 @@
 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[0,1,9,16,100] 解释：平方后，数组变为 [16,1,0,9,100] 排序后，数组变为 [0,1,9,16,100] 示例 2： 输入：nums = [-7,-3,2,3,11] 输出：[4,9,9,49,121] 提示： 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 已按 非递减顺序 排序 进阶： 请你设计时间复杂度为 O(n) 的算法解决本问题 Solution 利用有序的地方来提高效率，中间确实有分割点，但是不妨从两端着手，最大值肯定在两端，对应新数组的最后一位，然后依次往前推。 这里有有个困惑点，担心j--为-1，后来发现其实无所谓，最后虽然会变为-1，但是循环也就终止了，不会去给res[-1]赋值。 class Solution { public int[] sortedSquares(int[] nums) { int left = 0; int right = nums.length - 1; int[] res = new int[nums." />
   <meta name="description" content="Description 力扣
 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[0,1,9,16,100] 解释：平方后，数组变为 [16,1,0,9,100] 排序后，数组变为 [0,1,9,16,100] 示例 2： 输入：nums = [-7,-3,2,3,11] 输出：[4,9,9,49,121] 提示： 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 已按 非递减顺序 排序 进阶： 请你设计时间复杂度为 O(n) 的算法解决本问题 Solution 利用有序的地方来提高效率，中间确实有分割点，但是不妨从两端着手，最大值肯定在两端，对应新数组的最后一位，然后依次往前推。 这里有有个困惑点，担心j--为-1，后来发现其实无所谓，最后虽然会变为-1，但是循环也就终止了，不会去给res[-1]赋值。 class Solution { public int[] sortedSquares(int[] nums) { int left = 0; int right = nums.length - 1; int[] res = new int[nums." />
-  <meta property="og:locale" content="en-us" /><meta property="og:image" content="/logo.png" />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
   
 
   
