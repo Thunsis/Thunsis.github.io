@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
   <meta property="og:url" content="https://func.fun/posts/mutiple-gits/" />
-  <link rel="canonical" href="https://func.fun/posts/mutiple-gits/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+  <link rel="canonical" href="https://func.fun/posts/mutiple-gits/" /><link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="shortcut" href="/logo.png" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
 
   <script type="application/ld+json">
   {
@@ -42,7 +44,7 @@
 You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations." />
   <meta name="description" content="It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
 You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations." />
-  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="/logo.png" />
   
 
   
@@ -55,7 +57,7 @@ You should know the difference between git and github. github is one kind of git
   
 
   <link href="/index.xml" rel="alternate" type="application/rss+xml"
-    title="Xuan&#39;s Blog">
+    title="Xuan">
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
@@ -79,20 +81,16 @@ You should know the difference between git and github. github is one kind of git
       >Xuan</a
     >
   </div>
-  <div class="header-subtitle"></div>
+  <div class="header-subtitle">Data is the air that company breathes.</div>
 </header>
 <div class="row end-md center-xs header-items">
   
   <div class="header-item">
-    <a href="https://func.fun" target="_blank">Posts</a>
+    <a href="/about" target="_blank">About</a>
   </div>
   
   <div class="header-item">
-    <a href="https://func.fun/about" target="_blank">About Me</a>
-  </div>
-  
-  <div class="header-item">
-    <a href="https://github.com/thunsis" target="_blank">Github</a>
+    <a href="https://thunsis.github.com" target="_blank">Github</a>
   </div>
   
 </div>
@@ -140,11 +138,11 @@ SSH is a authorization tool. It is a bridge connecting mutiple network servers. 
 <h3 id="lets-generate-ssh-keys-for-different-emails">Let&rsquo;s generate ssh keys for different emails</h3>
 <p>Notice: email number = ssh key number
 If github and gitlab is registered by same email, then it can use same ssh key. Otherwise you are supposed to create new ssh keys and add them to website setting page accordingly.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ssh-keygen -t rsa -C &#34;CompanyEmailNameA@xxx.com&#34; -f ~/.ssh/company_name_rsa
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ssh-keygen -t rsa -C &#34;CompanyEmailNameA@xxx.com&#34; -f ~/.ssh/company_name_rsa
 </span></span><span style="display:flex;"><span>ssh-keygen -t rsa -C &#34;SelfEmailNameA@xxx.com&#34; -f ~/.ssh/self_name_rsa
 </span></span></code></pre></div><h3 id="update-different-ssh-keys-config">Update different ssh key’s config</h3>
 <p>Accounts of different website:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vi ~/.ssh/config
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vi ~/.ssh/config
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Host self_name
 </span></span><span style="display:flex;"><span>Hostname github.com
@@ -158,7 +156,7 @@ If github and gitlab is registered by same email, then it can use same ssh key. 
 </span></span><span style="display:flex;"><span>IdentityFile ~/.ssh/self_name_rsa
 </span></span><span style="display:flex;"><span>User self_gitlab_account_name
 </span></span></code></pre></div><p>Accounts of same website:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vi ~/.ssh/config
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vi ~/.ssh/config
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Host company_name
 </span></span><span style="display:flex;"><span>Hostname github.com
@@ -173,7 +171,7 @@ If github and gitlab is registered by same email, then it can use same ssh key. 
 </span></span><span style="display:flex;"><span>User self_github_account_name
 </span></span></code></pre></div><h3 id="copy-public-key-to-website-setting-page">Copy public key to website setting page</h3>
 <h2 id="git-config">Git config</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git config user.name &#34;self_github_account_name&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git config user.name &#34;self_github_account_name&#34;
 </span></span><span style="display:flex;"><span>git config user.email SelfEmailNameA@xxx.com
 </span></span></code></pre></div><p>That should be enough.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -234,6 +232,12 @@ If github and gitlab is registered by same email, then it can use same ssh key. 
   </article>
 
   
+<script src="/js/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({
+    container: document.getElementById('article')
+  });
+</script>
 
 <script>
   

@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
   <meta property="og:url" content="https://func.fun/en/blog-setup/" />
-  <link rel="canonical" href="https://func.fun/en/blog-setup/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+  <link rel="canonical" href="https://func.fun/en/blog-setup/" /><link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="shortcut" href="/logo.png" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
 
   <script type="application/ld+json">
   {
@@ -42,7 +44,7 @@
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
   <meta name="description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
-  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="/logo.png" />
   
 
   
@@ -55,7 +57,7 @@ We used to search on the internet when we are facing issues. We keep digging and
   
 
   <link href="/index.xml" rel="alternate" type="application/rss+xml"
-    title="Xuan&#39;s Blog">
+    title="Xuan">
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
@@ -79,20 +81,16 @@ We used to search on the internet when we are facing issues. We keep digging and
       >Xuan</a
     >
   </div>
-  <div class="header-subtitle"></div>
+  <div class="header-subtitle">Data is the air that company breathes.</div>
 </header>
 <div class="row end-md center-xs header-items">
   
   <div class="header-item">
-    <a href="https://func.fun" target="_blank">Posts</a>
+    <a href="/about" target="_blank">About</a>
   </div>
   
   <div class="header-item">
-    <a href="https://func.fun/about" target="_blank">About Me</a>
-  </div>
-  
-  <div class="header-item">
-    <a href="https://github.com/thunsis" target="_blank">Github</a>
+    <a href="https://thunsis.github.com" target="_blank">Github</a>
   </div>
   
 </div>
@@ -115,18 +113,18 @@ We used to search on the internet when we are facing issues. We keep digging and
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crazy..</p>
 <h2 id="install-brew">install brew</h2>
 <h3 id="brew">brew</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/bin/bash -c &#34;$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/bin/bash -c &#34;$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)&#34;
 </span></span></code></pre></div><h2 id="install-hugo">Install <code>hugo</code></h2>
 <h3 id="hugo">hugo</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>brew install hugo
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>brew install hugo
 </span></span></code></pre></div><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme</h2>
 <p>create main folder by hugo new command.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new site your_site_name
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new site your_site_name
 </span></span></code></pre></div><p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd your_site_name
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd your_site_name
 </span></span><span style="display:flex;"><span>git clone https://github.com/Track3/hermit.git themes/hermit
 </span></span></code></pre></div><p>create some web pages in .md format, following commands will automatically generate subfolder names <em>posts</em> and <em>about</em>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new posts/my-first-post.md
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new posts/my-first-post.md
 </span></span><span style="display:flex;"><span>hugo new about/about.md
 </span></span></code></pre></div><p>Ather this, hugo ducument says <code>hugo server -D</code>
 But I saw nothing when opened http://localhost:1313/.
@@ -137,7 +135,7 @@ After a huge struggling, I finally saw the contents.</p>
 However, after I made change accordingly, website still is blank.</li>
 <li>Copy <code>config.toml</code>  from your <code>themes/theme_name/exampleSite</code>folder to your site main folder. And modify some customer settings, I am only listing necessary parts:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>baseURL = &#34;https://Thunsis.github.io&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>baseURL = &#34;https://Thunsis.github.io&#34;
 </span></span><span style="display:flex;"><span># your github.io url
 </span></span><span style="display:flex;"><span>theme = &#34;hermit&#34;
 </span></span><span style="display:flex;"><span># them name
@@ -154,12 +152,12 @@ However, after I made change accordingly, website still is blank.</li>
 </span></span><span style="display:flex;"><span>    weight = 20
 </span></span><span style="display:flex;"><span># menu stucture, need to be aligned with /content/ subfolders you created
 </span></span></code></pre></div><p>Now you can see the website by, congratulations!</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo server -D
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo server -D
 </span></span></code></pre></div><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
 <p>We have get blog ready in localhost, but there still a way to go.. Carry on!</p>
 <h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it</h3>
 <p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is an important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>name: github pages
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>name: github pages
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>on:
 </span></span><span style="display:flex;"><span>  push:
@@ -191,9 +189,9 @@ However, after I made change accordingly, website still is blank.</li>
 </span></span><span style="display:flex;"><span>          publish_dir: ./public
 </span></span></code></pre></div><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo</h3>
 <p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo
 </span></span></code></pre></div><p>Now we push it into repo.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
 </span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/master
@@ -211,7 +209,7 @@ However, after I made change accordingly, website still is blank.</li>
 </ul>
 <h2 id="ps-sync-md-files-to-github">P.S. Sync .md files to github</h2>
 <p>create a repo names <em>blog</em>, then execute below commands as below:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd content
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd content
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m &#34;first commit&#34;
@@ -251,6 +249,12 @@ However, after I made change accordingly, website still is blank.</li>
   </article>
 
   
+<script src="/js/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({
+    container: document.getElementById('article')
+  });
+</script>
 
 <script>
   

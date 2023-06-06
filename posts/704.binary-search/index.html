@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
   <meta property="og:url" content="https://func.fun/posts/704.binary-search/" />
-  <link rel="canonical" href="https://func.fun/posts/704.binary-search/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+  <link rel="canonical" href="https://func.fun/posts/704.binary-search/" /><link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="shortcut" href="/logo.png" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan">
 
   <script type="application/ld+json">
   {
@@ -42,7 +44,7 @@
 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1: 输入: nums = [-1,0,3,5,9,12], target = 9 输出: 4 解释: 9 出现在 nums 中并且下标为 4 示例 2: 输入: nums = [-1,0,3,5,9,12], target = 2 输出: -1 解释: 2 不存在 nums 中因此返回 -1 提示： 你可以假设 nums 中的所有元素是不重复的。 n 将在 [1, 10000]之间。 nums 的每个元素都将在 [-9999, 9999]之间。 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，右闭减开不减。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums." />
   <meta name="description" content="Description 力扣
 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1: 输入: nums = [-1,0,3,5,9,12], target = 9 输出: 4 解释: 9 出现在 nums 中并且下标为 4 示例 2: 输入: nums = [-1,0,3,5,9,12], target = 2 输出: -1 解释: 2 不存在 nums 中因此返回 -1 提示： 你可以假设 nums 中的所有元素是不重复的。 n 将在 [1, 10000]之间。 nums 的每个元素都将在 [-9999, 9999]之间。 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，右闭减开不减。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums." />
-  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="/logo.png" />
   
 
   
@@ -55,7 +57,7 @@
   
 
   <link href="/index.xml" rel="alternate" type="application/rss+xml"
-    title="Xuan&#39;s Blog">
+    title="Xuan">
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
@@ -79,20 +81,16 @@
       >Xuan</a
     >
   </div>
-  <div class="header-subtitle"></div>
+  <div class="header-subtitle">Data is the air that company breathes.</div>
 </header>
 <div class="row end-md center-xs header-items">
   
   <div class="header-item">
-    <a href="https://func.fun" target="_blank">Posts</a>
+    <a href="/about" target="_blank">About</a>
   </div>
   
   <div class="header-item">
-    <a href="https://func.fun/about" target="_blank">About Me</a>
-  </div>
-  
-  <div class="header-item">
-    <a href="https://github.com/thunsis" target="_blank">Github</a>
+    <a href="https://thunsis.github.com" target="_blank">Github</a>
   </div>
   
 </div>
@@ -128,7 +126,7 @@
           
           <h2 id="description">Description</h2>
 <p><a href="https://leetcode-cn.com/problems/binary-search/solution/">力扣</a></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>示例 1:
@@ -160,50 +158,50 @@
 <li>left 和 right 可能会相等，所以while 条件里是 &lt;=。</li>
 <li>因为左右皆闭合，如果nums[middle] &lt;&gt; target, 左右需要加减1。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span> <span style="">int</span> search(<span style="">int</span>[] nums, <span style="">int</span> target) {
-</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0;
-</span></span><span style="display:flex;"><span>        <span style="">int</span> right = nums.length - 1;
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> (left &lt;= right){
-</span></span><span style="display:flex;"><span>            <span style="">int</span> middle = left + (right - left) / 2;
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (nums[middle] &gt; target){
-</span></span><span style="display:flex;"><span>                right = middle -1 ;
-</span></span><span style="display:flex;"><span>            } 
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (nums[middle] &lt; target){
-</span></span><span style="display:flex;"><span>                left = middle + 1;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> {
-</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> middle;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> -1;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Solution</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">search</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">};</span>
 </span></span></code></pre></div><h3 id="左闭右开">左闭右开</h3>
 <ol>
 <li>[left, right) -&gt; right 需要超出边界1位，所以left 从 第一个下标（0）开始，right 从最后一个下标+1开始（nums.length ）。</li>
 <li>left 和 right 不可能相等，所以while 条件里是 &lt;。</li>
 <li>因为左闭右开，如果nums[middle] &lt;&gt; target, 左需要加1，右不需要减1。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span> <span style="">int</span> search(<span style="">int</span>[] nums, <span style="">int</span> target) {
-</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0;
-</span></span><span style="display:flex;"><span>        <span style="">int</span> right = nums.length;
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> (left &lt; right){
-</span></span><span style="display:flex;"><span>            <span style="">int</span> middle = left + (right - left) / 2;
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (nums[middle] &gt; target){
-</span></span><span style="display:flex;"><span>                right = middle ;
-</span></span><span style="display:flex;"><span>            } 
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (nums[middle] &lt; target){
-</span></span><span style="display:flex;"><span>                left = middle + 1;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> {
-</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> middle;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> -1;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Solution</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">search</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">middle</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">middle</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">};</span>
 </span></span></code></pre></div><h2 id="notice-points">Notice Points</h2>
 <p>关于计算长度的几个方法</p>
 <ul>
@@ -211,19 +209,19 @@
 <li>length() : <strong>String related Object</strong>(String, StringBuilder, etc) — 取得字符串的长度</li>
 <li>size() : <strong>Collection Object</strong> (ArrayList, Set, etc) — 取得泛型集合大小</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">import</span> <span style="font-weight:bold">java.util.*</span>;
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">HelloWorld</span>{
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> <span style="">void</span> main(String []args){
-</span></span><span style="display:flex;"><span>        String[] arr = {<span style="font-style:italic">&#34;a&#34;</span>, <span style="font-style:italic">&#34;b&#34;</span>, <span style="font-style:italic">&#34;c&#34;</span>};
-</span></span><span style="display:flex;"><span>        String s = <span style="font-style:italic">&#34;123456&#34;</span>;
-</span></span><span style="display:flex;"><span>        Set&lt;String&gt; set = <span style="font-weight:bold">new</span> HashSet();
-</span></span><span style="display:flex;"><span>        set.add(<span style="font-style:italic">&#34;example&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">java.util.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">HelloWorld</span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">arr</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c&#34;</span><span style="color:#ce5c00;font-weight:bold">};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">String</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;123456&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashSet</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;example&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        System.out.println(arr.length); <span style="font-style:italic">//3
-</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        System.out.println(s.length()); <span style="font-style:italic">//6
-</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        System.out.println(set.size()); <span style="font-style:italic">//1
-</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>     }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">arr</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">//3
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">());</span> <span style="color:#8f5902;font-style:italic">//6
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">());</span> <span style="color:#8f5902;font-style:italic">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>     <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div>
         </div>
 
@@ -289,6 +287,12 @@
   </article>
 
   
+<script src="/js/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({
+    container: document.getElementById('article')
+  });
+</script>
 
 <script>
   
