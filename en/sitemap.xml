@@ -2,40 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.func.fun/en/categories/</loc>
+    <loc>https://func.fun/en/tags/spark/</loc>
+    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/spark-view-advanced-usage/</loc>
+    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/tags/</loc>
+    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/categories/"
+                href="https://func.fun/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/categories/"
+                href="https://func.fun/en/tags/"
                 />
   </url><url>
-    <loc>https://blog.func.fun/en/tags/</loc>
+    <loc>https://func.fun/en/</loc>
+    <lastmod>2023-06-05T09:59:23+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/tags/"
+                href="https://func.fun/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/tags/"
+                href="https://func.fun/en/"
                 />
   </url><url>
-    <loc>https://blog.func.fun/en/</loc>
+    <loc>https://func.fun/en/click-rate-drops-investigate/</loc>
+    <lastmod>2023-05-12T16:58:05+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/tags/trouble-shooting/</loc>
+    <lastmod>2023-05-12T16:58:05+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/tags/git/</loc>
+    <lastmod>2021-03-17T17:50:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/"
+                href="https://func.fun/tags/git/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/"
+                href="https://func.fun/en/tags/git/"
+                />
+  </url><url>
+    <loc>https://func.fun/en/mutiple-gits/</loc>
+    <lastmod>2021-03-17T17:50:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/tags/hugo/</loc>
+    <lastmod>2021-03-17T17:50:51+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://func.fun/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://func.fun/en/tags/hugo/"
+                />
+  </url><url>
+    <loc>https://func.fun/en/blog-setup/</loc>
+    <lastmod>2021-03-12T16:04:53+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/en/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://func.fun/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://func.fun/en/categories/"
                 />
   </url>
 </urlset>

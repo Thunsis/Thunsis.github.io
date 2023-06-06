@@ -2,9 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xuan&#39;s Blog</title>
-    <link>https://blog.func.fun/en/</link>
+    <link>https://func.fun/en/</link>
     <description>Recent content on Xuan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://blog.func.fun/en/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jun 2023 09:59:23 +0800</lastBuildDate><atom:link href="https://func.fun/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark View Advanced Usage</title>
+      <link>https://func.fun/en/spark-view-advanced-usage/</link>
+      <pubDate>Mon, 05 Jun 2023 09:59:23 +0800</pubDate>
+      
+      <guid>https://func.fun/en/spark-view-advanced-usage/</guid>
+      <description>View in spark is a powerful data layer, on which you can apply flexciable logics and control data visibility as well as orgnaize different sources together.
+I made lots of practice on view, it is worth to summarize the notice points on view advance usage. Before that, I did mutiple testing to make sure it is as correct as possible.
+Scope View not only could be a intermedia temporary code block, but also can be built permanently based on user requirements.</description>
+    </item>
+    
+    <item>
+      <title>Click Rate Drops Investigate</title>
+      <link>https://func.fun/en/click-rate-drops-investigate/</link>
+      <pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
+      
+      <guid>https://func.fun/en/click-rate-drops-investigate/</guid>
+      <description>Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a.</description>
+    </item>
+    
+    <item>
+      <title>How to handle mutiple git accounts in same laptop</title>
+      <link>https://func.fun/en/mutiple-gits/</link>
+      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
+      
+      <guid>https://func.fun/en/mutiple-gits/</guid>
+      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
+You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
+    </item>
+    
+    <item>
+      <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+      <link>https://func.fun/en/blog-setup/</link>
+      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
+      
+      <guid>https://func.fun/en/blog-setup/</guid>
+      <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
+    </item>
+    
   </channel>
 </rss>

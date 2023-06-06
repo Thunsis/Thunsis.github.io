@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Xuan" />
+  <meta property="og:url" content="https://func.fun/en/click-rate-drops-investigate/" />
+  <link rel="canonical" href="https://func.fun/en/click-rate-drops-investigate/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/func.fun\/"
+      },
+      "articleSection" : "",
+      "name" : "Click Rate Drops Investigate",
+      "headline" : "Click Rate Drops Investigate",
+      "description" : "Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.\nselect sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = \u0026#39;SEND\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = \u0026#39;CLICK\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks \/ sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT \u0026gt;= \u0026#39;2023-04-15\u0026#39; and a.",
+      "inLanguage" : "en-US",
+      "author" : "Xuan",
+      "creator" : "Xuan",
+      "publisher": "Xuan",
+      "accountablePerson" : "Xuan",
+      "copyrightHolder" : "Xuan",
+      "copyrightYear" : "2023",
+      "datePublished": "2023-05-12 16:58:05 \u002b0800 CST",
+      "dateModified" : "2023-05-12 16:58:05 \u002b0800 CST",
+      "url" : "https:\/\/func.fun\/en\/click-rate-drops-investigate\/",
+      "keywords" : [ "trouble-shooting", ]
+  }
+</script>
+<title>Click Rate Drops Investigate</title>
+  <meta property="og:title" content="Click Rate Drops Investigate" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a." />
+  <meta name="description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a." />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Xuan&#39;s Blog">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-xxx"></script>
+</head>
+
+
+<body>
+  <article class="post English" id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/en/"
+      >Xuan</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://func.fun" target="_blank">About Me</a>
+  </div>
+  
+  <div class="header-item">
+    <a href="https://github.com/thunsis" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+  <div class="lang-switch col-xs-3 col-xs-offset-9">
+    <a href="/cn/">Chinese</a>
+  </div>
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Click Rate Drops Investigate</h1>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h2 id="customer-concerns">Customer concerns</h2>
+<p>Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  SENT_DT,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">DISTINCT</span> <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> CHNL_TRCKNG_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> CHNL_TRCKNG_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks / sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/B28C6262-C71B-4525-B804-6B73AE3D5C25_2/QU2S2rthRNIYesKrbbmiQyKh0vdKi3hzjxNmVd6Pkz4z/image001.png" alt="image001.png"></p>
+<h2 id="why-we-are-involved-in">Why we are involved in?</h2>
+<ol>
+<li>User are querying our table and think data is abnormal.</li>
+<li>Even though customer directly found Tracking team, Tracking team insisted they already fixed VOD issue and suspect it is a reporting issue.</li>
+</ol>
+<h2 id="what-do-we-need-to-do">What do we need to do?</h2>
+<p>Prove it is not a reporting issue.</p>
+<h2 id="how-can-we-achive-this">How can we achive this?</h2>
+<p>We have 2 directions:</p>
+<ol>
+<li>Since customr are asking upstream tracking team, we only need to prove our data is consistant with upstream.</li>
+<li>Explain the “drops” are reasonable and not an issue.</li>
+</ol>
+<p>Obviously the second choice is more abstract and it is supposed to be done by tracking team, so we&rsquo;d better only to do option #1.</p>
+<p>But I want do full deepdive since we are summarizing experiences.</p>
+<h3 id="grouping-by-action-date">Grouping by action date</h3>
+<p>The click rate trend grouping by action date is as expected. 27th Apr to 3th May, click has 20% unrecoverable loss due to VOD issue.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  actn_dt,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> MH_EVENT_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> MH_EVENT_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks/sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> <span style="font-style:italic">------ pls use ACTN_DT instead of sent_dt
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>  <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) <span style="font-style:italic">-- and a.sent_dt &gt;= &#39;2023-04-15&#39;
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/F7F86972-641B-4D42-84F6-A48E202F5B1E_2/FsqEHY8nYAqbh3Qk4y2H3iyK3Uaw1xrCxsO9v6PccxIz/image002.png" alt="image002.png"></p>
+<h3 id="grouping-by-sent-date">Grouping by sent date</h3>
+<p>We guess the click rate grouping by sent date drops in recently days is because click and send has max 90 days window, but we just sent them for a few days.</p>
+<p>But we need to prove it by exact truth.</p>
+<p>From following code and chart whose max sent date is 9th May, we can select sent date and action date diffs, taking 11401 for example:</p>
+<p>by chosing 0, the click rate is stable and avg is 8%, approximate to click rate of 9th May</p>
+<p>by chosing 1, the click rate is stable and avg is 14%, approximate to click rate of 8th May</p>
+<p>…</p>
+<p>So the analyst saw drops is reasonable.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  clicks.sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  clicks.actn_dt,
+</span></span><span style="display:flex;"><span>  clicks.sent_dt,
+</span></span><span style="display:flex;"><span>  datediff(clicks.actn_dt, sends.sent_dt) diff,
+</span></span><span style="display:flex;"><span>  clicks.clicks,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(CLICKS) over (
+</span></span><span style="display:flex;"><span>    partition <span style="font-weight:bold">by</span> clicks.sent_event_type_desc,
+</span></span><span style="display:flex;"><span>    clicks.sent_dt
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">order</span> <span style="font-weight:bold">by</span> clicks.actn_dt
+</span></span><span style="display:flex;"><span>  ) sum_clicks, sends.sends, round(sum_clicks / sends.sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  (
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>      sent_event_type_desc,
+</span></span><span style="display:flex;"><span>      actn_dt,
+</span></span><span style="display:flex;"><span>      sent_dt,
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">count</span>(1) CLICKS
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>      ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>      A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> A.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2, 3
+</span></span><span style="display:flex;"><span>  ) clicks
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">join</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>      sent_event_type_desc,
+</span></span><span style="display:flex;"><span>      sent_dt,
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">COUNT</span>(1) <span style="font-weight:bold">AS</span> SENDS
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>      ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>      A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> A.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span><span style="display:flex;"><span>  ) sends <span style="font-weight:bold">on</span> clicks.sent_dt = sends.sent_dt
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> clicks.sent_event_type_desc = sends.sent_event_type_desc
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/54980083-80C4-4004-AA9A-0F8D1F93E017_2/gHLyfTHUWXx4SSxabEwx5VtAnICaLuGkKyXEd2G9I0wz/Snipaste_2023-05-12_16-21-59.png" alt="Snipaste_2023-05-12_16-21-59.png"></p>
+<p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A23B83EE-1ED4-4E5F-96D6-666B00B187E1_2/hf1XVNW3SHLIIXay2snIaXJL36U0dhLogyxmVLCDK8Iz/Snipaste_2023-05-12_16-26-16.png" alt="Snipaste_2023-05-12_16-26-16.png"></p>
+<h3 id="compare-with-upstream-table">Compare with upstream table</h3>
+<p>I also tried to compare clicks count with upstream table both grouping by action date, the trend matches.</p>
+<p>But count diff rate dropped between 2nd May and 7th May then recovered on 9th May, it is weird but abviously not our reporting issue since it back to nornal automatically and I did not spent much time on this.</p>
+<p>Keep monitoring is also a good way to saving effort.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  coalesce(
+</span></span><span style="display:flex;"><span>    payload [<span style="font-style:italic">&#39;typeid&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">when</span> sojlib.is_bigint(
+</span></span><span style="display:flex;"><span>        sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>            coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      ) = 1 <span style="font-weight:bold">then</span> sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>          coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>  ) email_type_id,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">when</span> action_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">then</span> payload [<span style="font-style:italic">&#39;session_start_dt&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">else</span> event_dt
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">end</span> event_dt,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> ACTION_TYPE = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> 1
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> 0
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> ACTION_TYPE = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> 1
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> 0
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks / sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  CHOCO_DATA_V.UTP_DAILY a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.EVENT_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.payload [<span style="font-style:italic">&#39;session_start_dt&#39;</span>] &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.ACTION_TYPE) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.CHANNEL_TYPE <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> coalesce(
+</span></span><span style="display:flex;"><span>    payload [<span style="font-style:italic">&#39;typeid&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">when</span> sojlib.is_bigint(
+</span></span><span style="display:flex;"><span>        sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>            coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      ) = 1 <span style="font-weight:bold">then</span> sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>          coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> coalesce(payload [<span style="font-style:italic">&#39;dup_flag&#39;</span>],0) &lt;&gt; 1 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A8F4F2DB-AF83-45B2-BC99-739289716733_2/kZlOtxyBdJCdcOfZL5QEPKpxwx2h8Atm8fFxZfbOZoIz/image003.png" alt="image003.png"></p>
+<p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/7D41D503-E745-457F-AE6A-489D89F17A2F_2/quAHMEwWikNSpDO7ptLEx8PjSQD2uyu7unqj5Glq5OYz/RE_%20Still%20have%20issue%20after%20P1%20VOD%20click%20loss%20Firewall%20issue%20resolved%20on%20May%203rd.eml">RE_ Still have issue after P1 VOD click loss Firewall issue resolved on May 3rd.eml</a></p>
+<p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/1ACA0FBA-E46B-4638-BEF2-34C34C05E73E_2/JZqGglhzUPMt8yFMWrFgrUH0WEC8dwLlHNByxP7R4lIz/View%20Order%20Details%20VOD%20Click%20Capture%20Loss%20Due%20to%20Firewall%20Issue.eml">View Order Details (VOD) Click Capture Loss Due to Firewall Issue.eml</a></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/en/tags/trouble-shooting/">
+                trouble-shooting
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

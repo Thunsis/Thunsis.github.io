@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Xuan&#39;s Blog</title>
+    <link>https://func.fun/en/tags/git/</link>
+    <description>Recent content in git on Xuan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Mar 2021 17:50:51 +0800</lastBuildDate><atom:link href="https://func.fun/en/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to handle mutiple git accounts in same laptop</title>
+      <link>https://func.fun/en/mutiple-gits/</link>
+      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
+      
+      <guid>https://func.fun/en/mutiple-gits/</guid>
+      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
+You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
+    </item>
+    
+    <item>
+      <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+      <link>https://func.fun/en/blog-setup/</link>
+      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
+      
+      <guid>https://func.fun/en/blog-setup/</guid>
+      <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
+    </item>
+    
+  </channel>
+</rss>

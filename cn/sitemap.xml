@@ -2,40 +2,116 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.func.fun/categories/</loc>
+    <loc>https://func.fun/977.squares-of-a-sorted-array/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/array/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/java/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/leetcode/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/simple/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/categories/"
+                href="https://func.fun/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/categories/"
+                href="https://func.fun/tags/"
                 />
   </url><url>
-    <loc>https://blog.func.fun/tags/</loc>
+    <loc>https://func.fun/tags/two-pointers/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/</loc>
+    <lastmod>2022-01-22T01:34:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/tags/"
+                href="https://func.fun/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/tags/"
+                href="https://func.fun/"
                 />
   </url><url>
-    <loc>https://blog.func.fun/</loc>
+    <loc>https://func.fun/844.backspace-string-compare/</loc>
+    <lastmod>2022-01-22T01:20:29+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/283.move-zeroes/</loc>
+    <lastmod>2022-01-22T01:10:08+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/26.remove-duplicates-from-sorted-array/</loc>
+    <lastmod>2022-01-21T17:40:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/27.remove-element/</loc>
+    <lastmod>2022-01-21T16:18:51+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/34.find-first-and-last-position-of-element-in-sorted-array/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/binary-search/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/medium/</loc>
+    <lastmod>2022-01-21T13:25:31+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/bind-domain/</loc>
+    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/tags/git/</loc>
+    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.func.fun/en/"
+                href="https://func.fun/en/tags/git/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cn"
-                href="https://blog.func.fun/"
+                href="https://func.fun/tags/git/"
+                />
+  </url><url>
+    <loc>https://func.fun/tags/hugo/</loc>
+    <lastmod>2022-01-18T17:12:25+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://func.fun/en/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://func.fun/tags/hugo/"
+                />
+  </url><url>
+    <loc>https://func.fun/35.search-insert-position/</loc>
+    <lastmod>2022-01-06T12:53:31+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/704.binary-search/</loc>
+    <lastmod>2021-12-08T12:25:36+08:00</lastmod>
+  </url><url>
+    <loc>https://func.fun/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://func.fun/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://func.fun/categories/"
                 />
   </url>
 </urlset>

@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>array on funcfun</title>
+    <title>array on Xuan&#39;s Blog</title>
     <link>https://func.fun/tags/array/</link>
-    <description>Recent content in array on funcfun</description>
+    <description>Recent content in array on Xuan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 22 Jan 2022 01:34:51 +0800</lastBuildDate><atom:link href="https://func.fun/tags/array/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>977.squares-of-a-sorted-array</title>
-      <link>https://func.fun/posts/977.squares-of-a-sorted-array/</link>
+      <link>https://func.fun/977.squares-of-a-sorted-array/</link>
       <pubDate>Sat, 22 Jan 2022 01:34:51 +0800</pubDate>
       
-      <guid>https://func.fun/posts/977.squares-of-a-sorted-array/</guid>
-      <description>Description 力扣 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[</description>
+      <guid>https://func.fun/977.squares-of-a-sorted-array/</guid>
+      <description>Description 力扣
+给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 示例 1： 输入：nums = [-4,-1,0,3,10] 输出：[0,1,9,16,100] 解释：平方后，数组变为 [16,1,0,9,100] 排序后，数组变为 [0,1,9,16,100] 示例 2： 输入：nums = [-7,-3,2,3,11] 输出：[4,9,9,49,121] 提示： 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 已按 非递减顺序 排序 进阶： 请你设计时间复杂度为 O(n) 的算法解决本问题 Solution 利用有序的地方来提高效率，中间确实有分割点，但是不妨从两端着手，最大值肯定在两端，对应新数组的最后一位，然后依次往前推。 这里有有个困惑点，担心j--为-1，后来发现其实无所谓，最后虽然会变为-1，但是循环也就终止了，不会去给res[-1]赋值。 class Solution { public int[] sortedSquares(int[] nums) { int left = 0; int right = nums.length - 1; int[] res = new int[nums.</description>
     </item>
     
     <item>
       <title>844.backspace-string-compare</title>
-      <link>https://func.fun/posts/844.backspace-string-compare/</link>
+      <link>https://func.fun/844.backspace-string-compare/</link>
       <pubDate>Sat, 22 Jan 2022 01:20:29 +0800</pubDate>
       
-      <guid>https://func.fun/posts/844.backspace-string-compare/</guid>
-      <description>Description 力扣 给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。 如果相等，返回 true ；否则，返回 false 。 注意</description>
+      <guid>https://func.fun/844.backspace-string-compare/</guid>
+      <description>Description 力扣
+给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。# 代表退格字符。 如果相等，返回 true ；否则，返回 false 。 注意：如果对空文本输入退格字符，文本继续为空。 示例 1： 输入：s = &amp;#34;ab#c&amp;#34;, t = &amp;#34;ad#c&amp;#34; 输出：true 解释：S 和 T 都会变成 “ac”。 示例 2： 输入：s = &amp;#34;ab##&amp;#34;, t = &amp;#34;c#d#&amp;#34; 输出：true 解释：s 和 t 都会变成 “”。 示例 3： 输入：s = &amp;#34;a##c&amp;#34;, t = &amp;#34;#a#c&amp;#34; 输出：true 解释：s 和 t 都会变成 “c”。 示例 4： 输入：s = &amp;#34;a#c&amp;#34;, t = &amp;#34;b&amp;#34; 输出：false 解释：s 会变成 “c”，但 t 仍然是 “b”。 提示： 1 &amp;lt;= s.</description>
     </item>
     
     <item>
       <title>283.move-zeroes</title>
-      <link>https://func.fun/posts/283.move-zeroes/</link>
+      <link>https://func.fun/283.move-zeroes/</link>
       <pubDate>Sat, 22 Jan 2022 01:10:08 +0800</pubDate>
       
-      <guid>https://func.fun/posts/283.move-zeroes/</guid>
-      <description>Description 力扣 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明: 必须在原数组上操作</description>
+      <guid>https://func.fun/283.move-zeroes/</guid>
+      <description>Description 力扣
+给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明: 必须在原数组上操作，不能拷贝额外的数组。 尽量减少操作次数。 Solution 在 27.remove-element 的基础上给后面加0。 for循环的第一个分号后面的部分第一轮不执行。 class Solution { public void moveZeroes(int[] nums) { if (nums == null) { return; } int j = 0; for (int i = 0; i &amp;lt; nums.length; i++) { if (nums[i] != 0) { nums[j++] = nums[i]; } } for (; j &amp;lt; nums.length; j++) { nums[j] = 0; } } } </description>
     </item>
     
     <item>
       <title>26.remove-duplicates-from-sorted-array</title>
-      <link>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</link>
+      <link>https://func.fun/26.remove-duplicates-from-sorted-array/</link>
       <pubDate>Fri, 21 Jan 2022 17:40:51 +0800</pubDate>
       
-      <guid>https://func.fun/posts/26.remove-duplicates-from-sorted-array/</guid>
-      <description>Description 力扣 给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。 不要使用额外的数组空间，你必须在 原地 修改</description>
+      <guid>https://func.fun/26.remove-duplicates-from-sorted-array/</guid>
+      <description>Description 力扣
+给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。 说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝 int len = removeDuplicates(nums); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。 for (int i = 0; i &amp;lt; len; i++) { print(nums[i]); } 示例 1： 输入：nums = [1,1,2] 输出：2, nums = [1,2] 解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。 示例 2： 输入：nums = [0,0,1,1,1,2,2,3,3,4] 输出：5, nums = [0,1,2,3,4] 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。 提示： 0 &amp;lt;= nums.</description>
     </item>
     
     <item>
       <title>27.remove-element</title>
-      <link>https://func.fun/posts/27.remove-element/</link>
+      <link>https://func.fun/27.remove-element/</link>
       <pubDate>Fri, 21 Jan 2022 16:18:51 +0800</pubDate>
       
-      <guid>https://func.fun/posts/27.remove-element/</guid>
-      <description>Description 力扣 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外</description>
+      <guid>https://func.fun/27.remove-element/</guid>
+      <description>Description 力扣
+给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。 for (int i = 0; i &amp;lt; len; i++) { print(nums[i]); } 示例 1： 输入：nums = [3,2,2,3], val = 3 输出：2, nums = [2,2] 解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。 示例 2： 输入：nums = [0,1,2,2,3,0,4,2], val = 2 输出：5, nums = [0,1,4,0,3] 解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。 提示： 0 &amp;lt;= nums.</description>
     </item>
     
     <item>
       <title>34.find-first-and-last-position-of-element-in-sorted-array</title>
-      <link>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</link>
+      <link>https://func.fun/34.find-first-and-last-position-of-element-in-sorted-array/</link>
       <pubDate>Fri, 21 Jan 2022 13:25:31 +0800</pubDate>
       
-      <guid>https://func.fun/posts/34.find-first-and-last-position-of-element-in-sorted-array/</guid>
-      <description>Description 力扣 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 t</description>
+      <guid>https://func.fun/34.find-first-and-last-position-of-element-in-sorted-array/</guid>
+      <description>Description 力扣
+给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 target，返回 [-1, -1]。 进阶： 你可以设计并实现时间复杂度为 O(log n) 的算法解决此问题吗？ 示例 1： 输入：nums = [5,7,7,8,8,10], target = 8 输出：[3,4] 示例 2： 输入：nums = [5,7,7,8,8,10], target = 6 输出：[-1,-1] 示例 3： 输入：nums = [], target = 0 输出：[-1,-1] 提示： 0 &amp;lt;= nums.length &amp;lt;= 105 -109 &amp;lt;= nums[i] &amp;lt;= 109 nums 是一个非递减数组 -109 &amp;lt;= target &amp;lt;= 109 Solution 这里都用左右闭合的方法。 简单版思路清晰一些，两段二分代码分别找rightBorder和leftBorder。 复杂版，一段二分代码。 这两种方案都是进行了两次二分查找。 关键在于nums[mid]=target的情况下的条件处理，向右逼近得leftBorder，向左逼近得rightBorder。 [1,2,3,4,5,5,5,6,7,8]
+比如 left = 1， right = 7， mid = 4 nums[mid] == nums[4] == 5 == target 如果要查找leftBorder， 则 right = mid - 1 = 4 leftBorder = right = 4 or leftBorder = mid = 5 下一步 left &amp;lt;= right (1 &amp;lt;= 4)还未跳出循环 mid = 2 nums[mid] == nums[2] == 3 &amp;lt; target left = mid + 1 = 3 下一步 left &amp;lt;= right (3 &amp;lt;= 4)还未跳出循环 mid = 3 nums[mid] == nums[3] == 4 &amp;lt; target left = mid + 1 = 4 下一步 left &amp;lt;= right (4 &amp;lt;= 4)还未跳出循环 mid = 4 nums[mid] == nums[4] == 5 = target 如果要查找leftBorder， 则 right = mid - 1 = 3 leftBorder = right = 3 or leftBorder = mid = 4 下一步 跳出循环 return leftBorder+1 = 4 or leftBorder = 4 简单法 class Solution { int[] searchRange(int[] nums, int target) { int rightBorder = getRightBorder(nums, target); int leftBorder = getLeftBorder(nums, target); if (rightBorder == -2 || leftBorder == -2) return new int[]{-1,-1}; else if (rightBorder - leftBorder &amp;gt; 1) return new int[]{leftBorder+1, rightBorder-1}; else return new int[]{-1,-1}; } int getRightBorder(int[] nums, int target) { int left = 0; int right = nums.</description>
     </item>
     
     <item>
       <title>35.search-insert-position</title>
-      <link>https://func.fun/posts/35.search-insert-position/</link>
+      <link>https://func.fun/35.search-insert-position/</link>
       <pubDate>Thu, 06 Jan 2022 12:53:31 +0800</pubDate>
       
-      <guid>https://func.fun/posts/35.search-insert-position/</guid>
-      <description>Description 力扣 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间</description>
+      <guid>https://func.fun/35.search-insert-position/</guid>
+      <description>Description 力扣
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums = [1,3,5,6], target = 5 输出: 2 示例 2: 输入: nums = [1,3,5,6], target = 2 输出: 1 示例 3: 输入: nums = [1,3,5,6], target = 7 输出: 4 示例 4: 输入: nums = [1,3,5,6], target = 0 输出: 0 示例 5: 输入: nums = [1], target = 0 输出: 0 提示: 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 为无重复元素的升序排列数组 -104 &amp;lt;= target &amp;lt;= 104 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，存在时右闭减开不减。不存在时右闭加右开不加。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums.</description>
     </item>
     
     <item>
       <title>704.binary-search</title>
-      <link>https://func.fun/posts/704.binary-search/</link>
+      <link>https://func.fun/704.binary-search/</link>
       <pubDate>Wed, 08 Dec 2021 12:25:36 +0800</pubDate>
       
-      <guid>https://func.fun/posts/704.binary-search/</guid>
-      <description>Description 力扣 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1:</description>
+      <guid>https://func.fun/704.binary-search/</guid>
+      <description>Description 力扣
+给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1: 输入: nums = [-1,0,3,5,9,12], target = 9 输出: 4 解释: 9 出现在 nums 中并且下标为 4 示例 2: 输入: nums = [-1,0,3,5,9,12], target = 2 输出: -1 解释: 2 不存在 nums 中因此返回 -1 提示： 你可以假设 nums 中的所有元素是不重复的。 n 将在 [1, 10000]之间。 nums 的每个元素都将在 [-9999, 9999]之间。 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，右闭减开不减。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums.</description>
     </item>
     
   </channel>
