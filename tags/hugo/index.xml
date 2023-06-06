@@ -9,11 +9,60 @@
     <lastBuildDate>Tue, 18 Jan 2022 17:12:25 +0800</lastBuildDate><atom:link href="https://func.fun/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bind github.io with your custom domain</title>
-      <link>https://func.fun/bind-domain/</link>
+      <link>https://func.fun/cn/bind-domain/</link>
       <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
       
-      <guid>https://func.fun/bind-domain/</guid>
+      <guid>https://func.fun/cn/bind-domain/</guid>
       <description> 添加2条域名解析： 1. CNAME - @ - your.github.io 2. CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾选Enforce HTTPS。 </description>
+    </item>
+    
+    <item>
+      <title>Bind github.io with your custom domain</title>
+      <link>https://func.fun/posts/bind-domain/</link>
+      <pubDate>Tue, 18 Jan 2022 17:12:25 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/bind-domain/</guid>
+      <description> 添加2条域名解析： 1. CNAME - @ - your.github.io 2. CNAME - www - your.github.io 在 你的网站仓库的设置里 填写Custom domain 为 你的域名（不加任何http(s)/www那种），解析完成后勾选Enforce HTTPS。 </description>
+    </item>
+    
+    <item>
+      <title>How to handle mutiple git accounts in same laptop</title>
+      <link>https://func.fun/en/mutiple-gits/</link>
+      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
+      
+      <guid>https://func.fun/en/mutiple-gits/</guid>
+      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
+You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
+    </item>
+    
+    <item>
+      <title>How to handle mutiple git accounts in same laptop</title>
+      <link>https://func.fun/posts/mutiple-gits/</link>
+      <pubDate>Wed, 17 Mar 2021 17:50:51 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/mutiple-gits/</guid>
+      <description>It’s quite easy if we only have one git account, then it became confusing when we want to add more account. I also met this problem. But I have found out solutions so let me show how to handle it.
+You should know the difference between git and github. github is one kind of git, and git have many website name such as gitlab, gitee… So there are the following two situations.</description>
+    </item>
+    
+    <item>
+      <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+      <link>https://func.fun/en/blog-setup/</link>
+      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
+      
+      <guid>https://func.fun/en/blog-setup/</guid>
+      <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
+    </item>
+    
+    <item>
+      <title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+      <link>https://func.fun/posts/blog-setup/</link>
+      <pubDate>Fri, 12 Mar 2021 16:04:53 +0800</pubDate>
+      
+      <guid>https://func.fun/posts/blog-setup/</guid>
+      <description>My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.</description>
     </item>
     
   </channel>

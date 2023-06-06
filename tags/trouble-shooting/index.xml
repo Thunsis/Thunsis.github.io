@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>trouble-shooting on funcfun</title>
+    <title>trouble-shooting on Xuan&#39;s Blog</title>
     <link>https://func.fun/tags/trouble-shooting/</link>
-    <description>Recent content in trouble-shooting on funcfun</description>
+    <description>Recent content in trouble-shooting on Xuan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Fri, 12 May 2023 16:58:05 +0800</lastBuildDate><atom:link href="https://func.fun/tags/trouble-shooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Click Rate Drops Investigate</title>
+      <link>https://func.fun/en/click-rate-drops-investigate/</link>
+      <pubDate>Fri, 12 May 2023 16:58:05 +0800</pubDate>
+      
+      <guid>https://func.fun/en/click-rate-drops-investigate/</guid>
+      <description>Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a.</description>
+    </item>
+    
     <item>
       <title>Click Rate Drops Investigate</title>
       <link>https://func.fun/posts/click-rate-drops-investigate/</link>

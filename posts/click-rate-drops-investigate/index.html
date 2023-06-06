@@ -1,113 +1,164 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="Click Rate Drops Investigate">
-<meta itemprop="description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
-select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39;SEND&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &#39;CLICK&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &gt;= &#39;2023-04-15&#39; and a."><meta itemprop="datePublished" content="2023-05-12T16:58:05+08:00" />
-<meta itemprop="dateModified" content="2023-05-12T16:58:05+08:00" />
-<meta itemprop="wordCount" content="815">
-<meta itemprop="keywords" content="trouble-shooting," /><meta property="og:title" content="Click Rate Drops Investigate" />
-<meta property="og:description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
-select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39;SEND&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &#39;CLICK&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &gt;= &#39;2023-04-15&#39; and a." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://func.fun/posts/click-rate-drops-investigate/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-12T16:58:05+08:00" />
-<meta property="article:modified_time" content="2023-05-12T16:58:05+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Click Rate Drops Investigate"/>
-<meta name="twitter:description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
-select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39;SEND&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &#39;CLICK&#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &gt;= &#39;2023-04-15&#39; and a."/>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.111.3">
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Xuan" />
+  <meta property="og:url" content="https://func.fun/posts/click-rate-drops-investigate/" />
+  <link rel="canonical" href="https://func.fun/posts/click-rate-drops-investigate/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
 
-	<title>Click Rate Drops Investigate</title>
-	<link rel="stylesheet" href="https://func.fun/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css" integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin="anonymous">
-	
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/func.fun\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Click Rate Drops Investigate",
+      "headline" : "Click Rate Drops Investigate",
+      "description" : "Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.\nselect sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = \u0026#39;SEND\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = \u0026#39;CLICK\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks \/ sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT \u0026gt;= \u0026#39;2023-04-15\u0026#39; and a.",
+      "inLanguage" : "en-US",
+      "author" : "Xuan",
+      "creator" : "Xuan",
+      "publisher": "Xuan",
+      "accountablePerson" : "Xuan",
+      "copyrightHolder" : "Xuan",
+      "copyrightYear" : "2023",
+      "datePublished": "2023-05-12 16:58:05 \u002b0800 CST",
+      "dateModified" : "2023-05-12 16:58:05 \u002b0800 CST",
+      "url" : "https:\/\/func.fun\/posts\/click-rate-drops-investigate\/",
+      "keywords" : [ "trouble-shooting", ]
+  }
+</script>
+<title>Click Rate Drops Investigate</title>
+  <meta property="og:title" content="Click Rate Drops Investigate" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a." />
+  <meta name="description" content="Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.
+select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp;#39;SEND&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = &amp;#39;CLICK&amp;#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks / sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT &amp;gt;= &amp;#39;2023-04-15&amp;#39; and a." />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Xuan&#39;s Blog">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
 </head>
 
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://func.fun">funcfun</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://func.fun/about">About</a>
-				<a href="https://func.fun/posts/">Posts</a>
 
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Thunsis" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://func.fun/about">About</a></li>
-			<li><a href="https://func.fun/posts/">Posts</a></li>
-		</ul>
-	</div>
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Xuan</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://func.fun" target="_blank">About Me</a>
+  </div>
+  
+  <div class="header-item">
+    <a href="https://github.com/thunsis" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
 
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Click Rate Drops Investigate</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2023-05-12 16:58:05 CST">
+                12 May 2023
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://func.fun/">@Xuan</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
 
-	<main class="site-main section-inner animated fadeIn faster">
-		<article class="thin">
-			<header class="post-header">
-				<div class="post-meta"><span>May 12, 2023</span></div>
-				<h1>Click Rate Drops Investigate</h1>
-			</header>
-			<div class="content">
-				<h2 id="customer-concerns">Customer concerns<a href="#customer-concerns" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+        <div class="post-content markdown-body">
+          
+          <h2 id="customer-concerns">Customer concerns</h2>
 <p>Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">SENT_DT</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">CHNL_TRCKNG_ID</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">CHNL_TRCKNG_ID</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/B28C6262-C71B-4525-B804-6B73AE3D5C25_2/QU2S2rthRNIYesKrbbmiQyKh0vdKi3hzjxNmVd6Pkz4z/image001.png" alt="image001.png"></p>
-<h2 id="why-we-are-involved-in">Why we are involved in?<a href="#why-we-are-involved-in" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  SENT_DT,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">DISTINCT</span> <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> CHNL_TRCKNG_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> CHNL_TRCKNG_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks / sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/B28C6262-C71B-4525-B804-6B73AE3D5C25_2/QU2S2rthRNIYesKrbbmiQyKh0vdKi3hzjxNmVd6Pkz4z/image001.png" alt="image001.png"></p>
+<h2 id="why-we-are-involved-in">Why we are involved in?</h2>
 <ol>
 <li>User are querying our table and think data is abnormal.</li>
 <li>Even though customer directly found Tracking team, Tracking team insisted they already fixed VOD issue and suspect it is a reporting issue.</li>
 </ol>
-<h2 id="what-do-we-need-to-do">What do we need to do?<a href="#what-do-we-need-to-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="what-do-we-need-to-do">What do we need to do?</h2>
 <p>Prove it is not a reporting issue.</p>
-<h2 id="how-can-we-achive-this">How can we achive this?<a href="#how-can-we-achive-this" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="how-can-we-achive-this">How can we achive this?</h2>
 <p>We have 2 directions:</p>
 <ol>
 <li>Since customr are asking upstream tracking team, we only need to prove our data is consistant with upstream.</li>
@@ -115,35 +166,35 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39
 </ol>
 <p>Obviously the second choice is more abstract and it is supposed to be done by tracking team, so we&rsquo;d better only to do option #1.</p>
 <p>But I want do full deepdive since we are summarizing experiences.</p>
-<h3 id="grouping-by-action-date">Grouping by action date<a href="#grouping-by-action-date" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="grouping-by-action-date">Grouping by action date</h3>
 <p>The click rate trend grouping by action date is as expected. 27th Apr to 3th May, click has 20% unrecoverable loss due to VOD issue.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">MH_EVENT_ID</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">actn_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">MH_EVENT_ID</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="o">/</span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> </span><span class="c1">------ pls use ACTN_DT instead of sent_dt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- and a.sent_dt &gt;= &#39;2023-04-15&#39;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/F7F86972-641B-4D42-84F6-A48E202F5B1E_2/FsqEHY8nYAqbh3Qk4y2H3iyK3Uaw1xrCxsO9v6PccxIz/image002.png" alt="image002.png"></p>
-<h3 id="grouping-by-sent-date">Grouping by sent date<a href="#grouping-by-sent-date" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  actn_dt,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> MH_EVENT_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">COUNT</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> actn_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> MH_EVENT_ID
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> <span style="font-weight:bold">NULL</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks/sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> <span style="font-style:italic">------ pls use ACTN_DT instead of sent_dt
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>  <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) <span style="font-style:italic">-- and a.sent_dt &gt;= &#39;2023-04-15&#39;
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/F7F86972-641B-4D42-84F6-A48E202F5B1E_2/FsqEHY8nYAqbh3Qk4y2H3iyK3Uaw1xrCxsO9v6PccxIz/image002.png" alt="image002.png"></p>
+<h3 id="grouping-by-sent-date">Grouping by sent date</h3>
 <p>We guess the click rate grouping by sent date drops in recently days is because click and send has max 90 days window, but we just sent them for a few days.</p>
 <p>But we need to prove it by exact truth.</p>
 <p>From following code and chart whose max sent date is 9th May, we can select sent date and action date diffs, taking 11401 for example:</p>
@@ -151,170 +202,187 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &#39
 <p>by chosing 1, the click rate is stable and avg is 14%, approximate to click rate of 8th May</p>
 <p>…</p>
 <p>So the analyst saw drops is reasonable.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">datediff</span><span class="p">(</span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="p">,</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_dt</span><span class="p">)</span><span class="w"> </span><span class="n">diff</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">clicks</span><span class="p">.</span><span class="n">clicks</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="n">CLICKS</span><span class="p">)</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">actn_dt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">sum_clicks</span><span class="p">,</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sends</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">sum_clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">actn_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">clicks</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">join</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_event_type_desc</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">sent_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">ACCESS_VIEWS</span><span class="p">.</span><span class="n">mh_event</span><span class="w"> </span><span class="n">a</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">A</span><span class="p">.</span><span class="n">ACTN_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">level_type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">actn_type</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">chnl_nm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_dt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">clicks</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sends</span><span class="p">.</span><span class="n">sent_event_type_desc</span><span class="w">
-</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/54980083-80C4-4004-AA9A-0F8D1F93E017_2/gHLyfTHUWXx4SSxabEwx5VtAnICaLuGkKyXEd2G9I0wz/Snipaste_2023-05-12_16-21-59.png" alt="Snipaste_2023-05-12_16-21-59.png"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  clicks.sent_event_type_desc,
+</span></span><span style="display:flex;"><span>  clicks.actn_dt,
+</span></span><span style="display:flex;"><span>  clicks.sent_dt,
+</span></span><span style="display:flex;"><span>  datediff(clicks.actn_dt, sends.sent_dt) diff,
+</span></span><span style="display:flex;"><span>  clicks.clicks,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(CLICKS) over (
+</span></span><span style="display:flex;"><span>    partition <span style="font-weight:bold">by</span> clicks.sent_event_type_desc,
+</span></span><span style="display:flex;"><span>    clicks.sent_dt
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">order</span> <span style="font-weight:bold">by</span> clicks.actn_dt
+</span></span><span style="display:flex;"><span>  ) sum_clicks, sends.sends, round(sum_clicks / sends.sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  (
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>      sent_event_type_desc,
+</span></span><span style="display:flex;"><span>      actn_dt,
+</span></span><span style="display:flex;"><span>      sent_dt,
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">count</span>(1) CLICKS
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>      ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>      A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> A.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2, 3
+</span></span><span style="display:flex;"><span>  ) clicks
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">join</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>      sent_event_type_desc,
+</span></span><span style="display:flex;"><span>      sent_dt,
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">COUNT</span>(1) <span style="font-weight:bold">AS</span> SENDS
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>      ACCESS_VIEWS.mh_event a
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>      A.ACTN_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> A.sent_dt &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.level_type <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;CC&#39;</span>) 
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.actn_type) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> a.chnl_nm <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">and</span> sent_event_type_desc <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span><span style="display:flex;"><span>  ) sends <span style="font-weight:bold">on</span> clicks.sent_dt = sends.sent_dt
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> clicks.sent_event_type_desc = sends.sent_event_type_desc
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/54980083-80C4-4004-AA9A-0F8D1F93E017_2/gHLyfTHUWXx4SSxabEwx5VtAnICaLuGkKyXEd2G9I0wz/Snipaste_2023-05-12_16-21-59.png" alt="Snipaste_2023-05-12_16-21-59.png"></p>
 <p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A23B83EE-1ED4-4E5F-96D6-666B00B187E1_2/hf1XVNW3SHLIIXay2snIaXJL36U0dhLogyxmVLCDK8Iz/Snipaste_2023-05-12_16-26-16.png" alt="Snipaste_2023-05-12_16-26-16.png"></p>
-<h3 id="compare-with-upstream-table">Compare with upstream table<a href="#compare-with-upstream-table" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="compare-with-upstream-table">Compare with upstream table</h3>
 <p>I also tried to compare clicks count with upstream table both grouping by action date, the trend matches.</p>
 <p>But count diff rate dropped between 2nd May and 7th May then recovered on 9th May, it is weird but abviously not our reporting issue since it back to nornal automatically and I did not spent much time on this.</p>
 <p>Keep monitoring is also a good way to saving effort.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">coalesce</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;typeid&#39;</span><span class="p">],</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">is_bigint</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">replace</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;.mle&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">replace</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;.mle&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">end</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">email_type_id</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">case</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="n">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;session_start_dt&#39;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">event_dt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">event_dt</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ACTION_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SEND&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SENDS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">sum</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CASE</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ACTION_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">END</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">CLICKS</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">round</span><span class="p">(</span><span class="n">clicks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sends</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">click_rate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">CHOCO_DATA_V</span><span class="p">.</span><span class="n">UTP_DAILY</span><span class="w"> </span><span class="n">a</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">A</span><span class="p">.</span><span class="n">EVENT_DT</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;session_start_dt&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2023-04-15&#39;</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">ACTION_TYPE</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SEND&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CLICK&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">CHANNEL_TYPE</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">coalesce</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;typeid&#39;</span><span class="p">],</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">when</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">is_bigint</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">replace</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s1">&#39;&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;.mle&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sojlib</span><span class="p">.</span><span class="n">soj_str_between_endlist</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">replace</span><span class="p">(</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;emsid&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;null&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="s1">&#39;&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s1">&#39;.mle&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">end</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">11401</span><span class="p">,</span><span class="w"> </span><span class="mi">11400</span><span class="p">,</span><span class="w"> </span><span class="mi">11412</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">coalesce</span><span class="p">(</span><span class="n">payload</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;dup_flag&#39;</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span></span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A8F4F2DB-AF83-45B2-BC99-739289716733_2/kZlOtxyBdJCdcOfZL5QEPKpxwx2h8Atm8fFxZfbOZoIz/image003.png" alt="image003.png"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="font-weight:bold">select</span>
+</span></span><span style="display:flex;"><span>  coalesce(
+</span></span><span style="display:flex;"><span>    payload [<span style="font-style:italic">&#39;typeid&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">when</span> sojlib.is_bigint(
+</span></span><span style="display:flex;"><span>        sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>            coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      ) = 1 <span style="font-weight:bold">then</span> sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>          coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>  ) email_type_id,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">when</span> action_type = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">then</span> payload [<span style="font-style:italic">&#39;session_start_dt&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">else</span> event_dt
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">end</span> event_dt,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> ACTION_TYPE = <span style="font-style:italic">&#39;SEND&#39;</span> <span style="font-weight:bold">THEN</span> 1
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> 0
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">AS</span> SENDS,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sum</span>(
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">CASE</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">WHEN</span> ACTION_TYPE = <span style="font-style:italic">&#39;CLICK&#39;</span> <span style="font-weight:bold">THEN</span> 1
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">ELSE</span> 0
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">END</span>
+</span></span><span style="display:flex;"><span>  ) CLICKS,
+</span></span><span style="display:flex;"><span>  round(clicks / sends * 100, 2) click_rate
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span>
+</span></span><span style="display:flex;"><span>  CHOCO_DATA_V.UTP_DAILY a
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">where</span>
+</span></span><span style="display:flex;"><span>  A.EVENT_DT &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.payload [<span style="font-style:italic">&#39;session_start_dt&#39;</span>] &gt;= <span style="font-style:italic">&#39;2023-04-15&#39;</span> 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> <span style="font-weight:bold">upper</span>(a.ACTION_TYPE) <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SEND&#39;</span>, <span style="font-style:italic">&#39;CLICK&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> a.CHANNEL_TYPE <span style="font-weight:bold">in</span> (<span style="font-style:italic">&#39;SITE_EMAIL&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> coalesce(
+</span></span><span style="display:flex;"><span>    payload [<span style="font-style:italic">&#39;typeid&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">case</span>
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">when</span> sojlib.is_bigint(
+</span></span><span style="display:flex;"><span>        sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>          <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>            coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      ) = 1 <span style="font-weight:bold">then</span> sojlib.soj_str_between_endlist(
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">replace</span>(
+</span></span><span style="display:flex;"><span>          coalesce(payload [<span style="font-style:italic">&#39;emsid&#39;</span>], payload [<span style="font-style:italic">&#39;sid&#39;</span>]),
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;null&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="font-style:italic">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;e&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">&#39;.mle&#39;</span>
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>  ) <span style="font-weight:bold">in</span> (11401, 11400, 11412)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">and</span> coalesce(payload [<span style="font-style:italic">&#39;dup_flag&#39;</span>],0) &lt;&gt; 1 
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">GROUP</span> <span style="font-weight:bold">BY</span> 1, 2
+</span></span></code></pre></div><p><img src="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/A8F4F2DB-AF83-45B2-BC99-739289716733_2/kZlOtxyBdJCdcOfZL5QEPKpxwx2h8Atm8fFxZfbOZoIz/image003.png" alt="image003.png"></p>
 <p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/7D41D503-E745-457F-AE6A-489D89F17A2F_2/quAHMEwWikNSpDO7ptLEx8PjSQD2uyu7unqj5Glq5OYz/RE_%20Still%20have%20issue%20after%20P1%20VOD%20click%20loss%20Firewall%20issue%20resolved%20on%20May%203rd.eml">RE_ Still have issue after P1 VOD click loss Firewall issue resolved on May 3rd.eml</a></p>
 <p><a href="https://res.craft.do/user/full/ca2ca4b1-4830-faa3-78df-935631a77e14/doc/4C3C4471-368B-4491-9714-E3F11E1969D6/1ACA0FBA-E46B-4638-BEF2-34C34C05E73E_2/JZqGglhzUPMt8yFMWrFgrUH0WEC8dwLlHNByxP7R4lIz/View%20Order%20Details%20VOD%20Click%20Capture%20Loss%20Due%20to%20Firewall%20Issue.eml">View Order Details (VOD) Click Capture Loss Due to Firewall Issue.eml</a></p>
 
-			</div>
-			<hr class="post-end">
-			<footer class="post-info">
-				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://func.fun/tags/trouble-shooting">trouble-shooting</a></span>
-				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>815 Words</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2023-05-12 16:58 &#43;0800</p>
-			</footer>
-		</article>
-		<div class="post-nav thin">
-			<a class="next-post" href="https://func.fun/posts/spark-view-advanced-usage/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Spark View Advanced Usage</span>
-			</a>
-			<a class="prev-post" href="https://func.fun/posts/977.squares-of-a-sorted-array/">
-				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>977.squares-of-a-sorted-array</span>
-			</a>
-		</div>
-		<div id="comments" class="thin">
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/trouble-shooting/">
+                trouble-shooting
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
 </div>
-	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2023 <a href="https://func.fun">Xuan HE</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://func.fun/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-	</footer>
+      </div>
+    </div>
+  </article>
 
+  
 
+<script>
+  
+  
+    
+    
+  
+</script>
 
-	<script src="https://func.fun/js/bundle.min.580988ed2982bcbb74a1773c7abea97b43e4c43b9324e10cda0813ec6ec4bb67.js" integrity="sha256-WAmI7SmCvLt0oXc8er6pe0PkxDuTJOEM2ggT7G7Eu2c=" crossorigin="anonymous"></script>
-	
+  
 
 </body>
 

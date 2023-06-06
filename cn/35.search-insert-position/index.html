@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Xuan" />
-  <meta property="og:url" content="https://func.fun/tags/two-pointers/" />
-  <link rel="canonical" href="https://func.fun/tags/two-pointers/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+  <meta property="og:url" content="https://func.fun/cn/35.search-insert-position/" />
+  <link rel="canonical" href="https://func.fun/cn/35.search-insert-position/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/func.fun\/"
       },
-      "articleSection" : "tags",
-      "name" : "two-pointers",
-      "headline" : "two-pointers",
-      "description" : "",
+      "articleSection" : "cn",
+      "name" : "35.search-insert-position",
+      "headline" : "35.search-insert-position",
+      "description" : "Description 力扣\n给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums = [1,3,5,6], target = 5 输出: 2 示例 2: 输入: nums = [1,3,5,6], target = 2 输出: 1 示例 3: 输入: nums = [1,3,5,6], target = 7 输出: 4 示例 4: 输入: nums = [1,3,5,6], target = 0 输出: 0 示例 5: 输入: nums = [1], target = 0 输出: 0 提示: 1 \u0026lt;= nums.length \u0026lt;= 104 -104 \u0026lt;= nums[i] \u0026lt;= 104 nums 为无重复元素的升序排列数组 -104 \u0026lt;= target \u0026lt;= 104 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，存在时右闭减开不减。不存在时右闭加右开不加。 左右闭合 [left, right] -\u0026gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums.",
       "inLanguage" : "en-US",
       "author" : "Xuan",
       "creator" : "Xuan",
@@ -29,17 +29,19 @@
       "accountablePerson" : "Xuan",
       "copyrightHolder" : "Xuan",
       "copyrightYear" : "2022",
-      "datePublished": "2022-01-22 01:34:51 \u002b0800 CST",
-      "dateModified" : "2022-01-22 01:34:51 \u002b0800 CST",
-      "url" : "https:\/\/func.fun\/tags\/two-pointers\/",
-      "keywords" : [  ]
+      "datePublished": "2022-01-06 12:53:31 \u002b0800 CST",
+      "dateModified" : "2022-01-06 12:53:31 \u002b0800 CST",
+      "url" : "https:\/\/func.fun\/cn\/35.search-insert-position\/",
+      "keywords" : [ "array","leetcode","java","binary-search","simple", ]
   }
 </script>
-<title>two-pointers</title>
-  <meta property="og:title" content="two-pointers" />
+<title>35.search-insert-position</title>
+  <meta property="og:title" content="35.search-insert-position" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="Description 力扣
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums = [1,3,5,6], target = 5 输出: 2 示例 2: 输入: nums = [1,3,5,6], target = 2 输出: 1 示例 3: 输入: nums = [1,3,5,6], target = 7 输出: 4 示例 4: 输入: nums = [1,3,5,6], target = 0 输出: 0 示例 5: 输入: nums = [1], target = 0 输出: 0 提示: 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 为无重复元素的升序排列数组 -104 &amp;lt;= target &amp;lt;= 104 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，存在时右闭减开不减。不存在时右闭加右开不加。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums." />
+  <meta name="description" content="Description 力扣
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums = [1,3,5,6], target = 5 输出: 2 示例 2: 输入: nums = [1,3,5,6], target = 2 输出: 1 示例 3: 输入: nums = [1,3,5,6], target = 7 输出: 4 示例 4: 输入: nums = [1,3,5,6], target = 0 输出: 0 示例 5: 输入: nums = [1], target = 0 输出: 0 提示: 1 &amp;lt;= nums.length &amp;lt;= 104 -104 &amp;lt;= nums[i] &amp;lt;= 104 nums 为无重复元素的升序排列数组 -104 &amp;lt;= target &amp;lt;= 104 Solution 用二分的前提是升序且不重复。 需要注意边界条件的细节。 全闭能等，存在时右闭减开不减。不存在时右闭加右开不加。 左右闭合 [left, right] -&amp;gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums." />
   <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
   
 
@@ -66,10 +68,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -94,81 +97,150 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term">two-pointers</h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2022</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-01-22 01:34:51 CST">Jan 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/977.squares-of-a-sorted-array/">977.squares-of-a-sorted-array</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-01-22 01:20:29 CST">Jan 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/844.backspace-string-compare/">844.backspace-string-compare</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-01-22 01:10:08 CST">Jan 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/283.move-zeroes/">283.move-zeroes</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-01-21 17:40:51 CST">Jan 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/26.remove-duplicates-from-sorted-array/">26.remove-duplicates-from-sorted-array</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-01-21 16:18:51 CST">Jan 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/27.remove-element/">27.remove-element</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">35.search-insert-position</h1>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h2 id="description">Description</h2>
+<p><a href="https://leetcode-cn.com/problems/search-insert-position/">力扣</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>请必须使用时间复杂度为 O(log n) 的算法。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>示例 1:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>输入: nums = [1,3,5,6], target = 5
+</span></span><span style="display:flex;"><span>输出: 2
+</span></span><span style="display:flex;"><span>示例 2:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>输入: nums = [1,3,5,6], target = 2
+</span></span><span style="display:flex;"><span>输出: 1
+</span></span><span style="display:flex;"><span>示例 3:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>输入: nums = [1,3,5,6], target = 7
+</span></span><span style="display:flex;"><span>输出: 4
+</span></span><span style="display:flex;"><span>示例 4:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>输入: nums = [1,3,5,6], target = 0
+</span></span><span style="display:flex;"><span>输出: 0
+</span></span><span style="display:flex;"><span>示例 5:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>输入: nums = [1], target = 0
+</span></span><span style="display:flex;"><span>输出: 0
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>提示:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1 &lt;= nums.length &lt;= 104
+</span></span><span style="display:flex;"><span>-104 &lt;= nums[i] &lt;= 104
+</span></span><span style="display:flex;"><span>nums 为无重复元素的升序排列数组
+</span></span><span style="display:flex;"><span>-104 &lt;= target &lt;= 104
+</span></span></code></pre></div><h2 id="solution">Solution</h2>
+<ol>
+<li>用二分的前提是升序且不重复。</li>
+<li>需要注意边界条件的细节。</li>
+<li>全闭能等，存在时右闭减开不减。不存在时右闭加右开不加。</li>
+</ol>
+<h3 id="左右闭合">左右闭合</h3>
+<ol>
+<li>[left, right] -&gt; 都能取到，所以left 从 第一个下标（0）开始，right 从最后一个下标开始（nums.length - 1）。</li>
+<li>left 和 right 可能会相等，所以while 条件里是 &lt;=。</li>
+<li>因为左右皆闭合，如果nums[middle] &lt;&gt; target, 左右需要加减1。</li>
+<li>如果数组里不存在，插入的位置为right加1。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span> <span style="">int</span> searchInsert(<span style="">int</span>[] nums, <span style="">int</span> target) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right = nums.length - 1;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> (left &lt;= right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> middle = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (nums[middle] &gt; target){
+</span></span><span style="display:flex;"><span>                right = middle - 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (nums[middle] &lt; target){
+</span></span><span style="display:flex;"><span>                left = middle + 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> middle;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> right + 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="左闭右开">左闭右开</h3>
+<ol>
+<li>[left, right) -&gt; right 需要超出边界1位，所以left 从 第一个下标（0）开始，right 从最后一个下标+1开始（nums.length ）。</li>
+<li>left 和 right 不可能相等，所以while 条件里是 &lt;。</li>
+<li>因为左闭右开，如果nums[middle] &lt;&gt; target, 左需要加1，右不需要减1。</li>
+<li>如果数组里不存在，插入的位置为right。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span> <span style="">int</span> searchInsert(<span style="">int</span>[] nums, <span style="">int</span> target) {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> left = 0;
+</span></span><span style="display:flex;"><span>        <span style="">int</span> right = nums.length;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> (left &lt; right){
+</span></span><span style="display:flex;"><span>            <span style="">int</span> middle = left + (right - left)/2;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> (nums[middle] &gt; target){
+</span></span><span style="display:flex;"><span>                right = middle;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (nums[middle] &lt; target){
+</span></span><span style="display:flex;"><span>                left = middle + 1;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> middle;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="notice-points">Notice Points</h2>
+<p>和<a href="https://thunsis.github.io/posts/704.binary-search/">704.binary-search</a>的区别是多考虑了不在数组内的情况，在right的基础上，右闭加右开不加即可。
+在二分查找中，坚持循环区间开闭的不变量。</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/array/">
+                array
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/leetcode/">
+                leetcode
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/java/">
+                java
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/binary-search/">
+                binary-search
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/simple/">
+                simple
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
 
         <div class="site-footer">
   
@@ -188,6 +260,8 @@
     
   
 </script>
+
+  
 
 </body>
 

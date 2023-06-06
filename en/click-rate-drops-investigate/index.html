@@ -18,7 +18,7 @@
            "@type": "WebPage",
            "@id": "https:\/\/func.fun\/"
       },
-      "articleSection" : "",
+      "articleSection" : "en",
       "name" : "Click Rate Drops Investigate",
       "headline" : "Click Rate Drops Investigate",
       "description" : "Customer concerns Customer think there still have issue after P1 VOD click loss Firewall issue being resolved by upstream tracking team on May 3rd.\nselect sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = \u0026#39;SEND\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) AS SENDS, COUNT( CASE WHEN actn_type = \u0026#39;CLICK\u0026#39; THEN CHNL_TRCKNG_ID ELSE NULL END ) CLICKS, round(clicks \/ sends * 100, 2) click_rate from ACCESS_VIEWS.mh_event a where A.ACTN_DT \u0026gt;= \u0026#39;2023-04-15\u0026#39; and a.",
@@ -68,14 +68,14 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp
 
 
 <body>
-  <article class="post English" id="article">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
         <div class="site-header">
           
 <header>
   <div class="header-title">
-    <a href="/en/"
+    <a href="/"
       >Xuan</a
     >
   </div>
@@ -93,10 +93,6 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp
   
 </div>
 <div class="row end-xs">
-   
-  <div class="lang-switch col-xs-3 col-xs-offset-9">
-    <a href="/cn/">Chinese</a>
-  </div>
    
 </div>
 <div class="header-line"></div>
@@ -326,7 +322,7 @@ select sent_event_type_desc, SENT_DT, COUNT( DISTINCT CASE WHEN actn_type = &amp
           <div class="col-xs-12">
             
             <div class="post-tags">
-              <a href="/en/tags/trouble-shooting/">
+              <a href="/tags/trouble-shooting/">
                 trouble-shooting
               </a>
             </div>

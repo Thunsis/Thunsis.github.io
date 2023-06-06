@@ -1,96 +1,147 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="Setup static github.io blog engined by hugo &amp; hermit on Mac">
-<meta itemprop="description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
-We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised."><meta itemprop="datePublished" content="2021-03-12T16:04:53+08:00" />
-<meta itemprop="dateModified" content="2021-03-12T16:04:53+08:00" />
-<meta itemprop="wordCount" content="652">
-<meta itemprop="keywords" content="hugo,git," /><meta property="og:title" content="Setup static github.io blog engined by hugo &amp; hermit on Mac" />
-<meta property="og:description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Xuan" />
+  <meta property="og:url" content="https://func.fun/posts/blog-setup/" />
+  <link rel="canonical" href="https://func.fun/posts/blog-setup/" /><link rel="alternate" type="application/atom+xml" href="https://func.fun/index.xml" title="Xuan&#39;s Blog">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/func.fun\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Setup static github.io blog engined by hugo \u0026 hermit on Mac",
+      "headline" : "Setup static github.io blog engined by hugo \u0026 hermit on Mac",
+      "description" : "My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.\nWe used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised.",
+      "inLanguage" : "en-US",
+      "author" : "Xuan",
+      "creator" : "Xuan",
+      "publisher": "Xuan",
+      "accountablePerson" : "Xuan",
+      "copyrightHolder" : "Xuan",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-03-12 16:04:53 \u002b0800 CST",
+      "dateModified" : "2021-03-12 16:04:53 \u002b0800 CST",
+      "url" : "https:\/\/func.fun\/posts\/blog-setup\/",
+      "keywords" : [ "hugo","git", ]
+  }
+</script>
+<title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
+  <meta property="og:title" content="Setup static github.io blog engined by hugo &amp; hermit on Mac" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
 We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://func.fun/posts/blog-setup/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-12T16:04:53+08:00" />
-<meta property="article:modified_time" content="2021-03-12T16:04:53+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Setup static github.io blog engined by hugo &amp; hermit on Mac"/>
-<meta name="twitter:description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
-We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised."/>
+  <meta name="description" content="My thoughts I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.
+We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised." />
+  <meta property="og:locale" content="en-us" /><meta property="og:image" content="" />
+  
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
 
-	<title>Setup static github.io blog engined by hugo &amp; hermit on Mac</title>
-	<link rel="stylesheet" href="https://func.fun/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css" integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin="anonymous">
-	
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Xuan&#39;s Blog">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
 </head>
 
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://func.fun">funcfun</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://func.fun/about">About</a>
-				<a href="https://func.fun/posts/">Posts</a>
 
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Thunsis" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://func.fun/about">About</a></li>
-			<li><a href="https://func.fun/posts/">Posts</a></li>
-		</ul>
-	</div>
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Xuan</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://func.fun" target="_blank">About Me</a>
+  </div>
+  
+  <div class="header-item">
+    <a href="https://github.com/thunsis" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
 
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Setup static github.io blog engined by hugo &amp; hermit on Mac</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2021-03-12 16:04:53 CST">
+                12 Mar 2021
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://func.fun/">@Xuan</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
 
-	<main class="site-main section-inner animated fadeIn faster">
-		<article class="thin">
-			<header class="post-header">
-				<div class="post-meta"><span>Mar 12, 2021</span></div>
-				<h1>Setup static github.io blog engined by hugo &amp; hermit on Mac</h1>
-			</header>
-			<div class="content">
-				<h2 id="my-thoughts">My thoughts<a href="#my-thoughts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+        <div class="post-content markdown-body">
+          
+          <h2 id="my-thoughts">My thoughts</h2>
 <p>I always wanted to setup a blog and keep updating the best practice which I learned from work(in eBay) and self study. It may be helpful by other peoples who met issue and clicked into this page. I would be very proud of this.</p>
 <p>We used to search on the internet when we are facing issues. We keep digging and digging, trying again and again to resolve problems. A common case is many blogs are just pasted from anothor, that is very time wasting once we realised. So I will always write original blogs, and don’t forget the initial purpose.</p>
 <p>Now let me begin recording my struggling blog build road. I had to say the quick_start part in hugo document is not friendly… The blank site on localhost:1313 drives me crazy..</p>
-<h2 id="install-brew">install brew<a href="#install-brew" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
-<h3 id="brew">brew<a href="#brew" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<pre tabindex="0"><code>/bin/bash -c &#34;$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)&#34;
-</code></pre><h2 id="install-hugo">Install <code>hugo</code><a href="#install-hugo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
-<h3 id="hugo">hugo<a href="#hugo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<pre tabindex="0"><code>brew install hugo
-</code></pre><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme<a href="#create-site-and-add-your-favorate-theme" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="install-brew">install brew</h2>
+<h3 id="brew">brew</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/bin/bash -c &#34;$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)&#34;
+</span></span></code></pre></div><h2 id="install-hugo">Install <code>hugo</code></h2>
+<h3 id="hugo">hugo</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>brew install hugo
+</span></span></code></pre></div><h2 id="create-site-and-add-your-favorate-theme">Create site and add your favorate theme</h2>
 <p>create main folder by hugo new command.</p>
-<pre tabindex="0"><code>hugo new site your_site_name
-</code></pre><p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
-<pre tabindex="0"><code>cd your_site_name
-git clone https://github.com/Track3/hermit.git themes/hermit
-</code></pre><p>create some web pages in .md format, following commands will automatically generate subfolder names <em>posts</em> and <em>about</em>.</p>
-<pre tabindex="0"><code>hugo new posts/my-first-post.md
-hugo new about/about.md
-</code></pre><p>Ather this, hugo ducument says <code>hugo server -D</code>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new site your_site_name
+</span></span></code></pre></div><p>cd your_site_name, then clone your favorate hugo them into themes/.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd your_site_name
+</span></span><span style="display:flex;"><span>git clone https://github.com/Track3/hermit.git themes/hermit
+</span></span></code></pre></div><p>create some web pages in .md format, following commands will automatically generate subfolder names <em>posts</em> and <em>about</em>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo new posts/my-first-post.md
+</span></span><span style="display:flex;"><span>hugo new about/about.md
+</span></span></code></pre></div><p>Ather this, hugo ducument says <code>hugo server -D</code>
 But I saw nothing when opened http://localhost:1313/.
 After a huge struggling, I finally saw the contents.</p>
 <p>Needed actions are:</p>
@@ -99,119 +150,145 @@ After a huge struggling, I finally saw the contents.</p>
 However, after I made change accordingly, website still is blank.</li>
 <li>Copy <code>config.toml</code>  from your <code>themes/theme_name/exampleSite</code>folder to your site main folder. And modify some customer settings, I am only listing necessary parts:</li>
 </ol>
-<pre tabindex="0"><code>baseURL = &#34;https://Thunsis.github.io&#34;
-# your github.io url
-theme = &#34;hermit&#34;
-# them name
-[menu]
-
-  [[menu.main]]
-    name = &#34;Posts&#34;
-    url = &#34;posts/&#34;
-    weight = 10
-
-  [[menu.main]]
-    name = &#34;About&#34;
-    url = &#34;about/&#34;
-    weight = 20
-# menu stucture, need to be aligned with /content/ subfolders you created
-</code></pre><p>Now you can see the website by, congratulations!</p>
-<pre tabindex="0"><code>hugo server -D
-</code></pre><h2 id="deploy-to-github-repo">Deploy to github repo<a href="#deploy-to-github-repo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>baseURL = &#34;https://Thunsis.github.io&#34;
+</span></span><span style="display:flex;"><span># your github.io url
+</span></span><span style="display:flex;"><span>theme = &#34;hermit&#34;
+</span></span><span style="display:flex;"><span># them name
+</span></span><span style="display:flex;"><span>[menu]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [[menu.main]]
+</span></span><span style="display:flex;"><span>    name = &#34;Posts&#34;
+</span></span><span style="display:flex;"><span>    url = &#34;posts/&#34;
+</span></span><span style="display:flex;"><span>    weight = 10
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [[menu.main]]
+</span></span><span style="display:flex;"><span>    name = &#34;About&#34;
+</span></span><span style="display:flex;"><span>    url = &#34;about/&#34;
+</span></span><span style="display:flex;"><span>    weight = 20
+</span></span><span style="display:flex;"><span># menu stucture, need to be aligned with /content/ subfolders you created
+</span></span></code></pre></div><p>Now you can see the website by, congratulations!</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div><h2 id="deploy-to-github-repo">Deploy to github repo</h2>
 <p>We have get blog ready in localhost, but there still a way to go.. Carry on!</p>
-<h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it<a href="#create-your_namegithubio-repo-and-configure-it" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="create-your_namegithubio-repo-and-configure-it">Create your_name.github.io repo and configure it</h3>
 <p>I won’t go into details on creating repo names <code>your_name.github.io</code>, there is an important action need, which is to create a file names <code>.github/workflows/gh-pages.yml</code> under your just created repo. The content should be:</p>
-<pre tabindex="0"><code>name: github pages
-
-on:
-  push:
-    branches:
-      - main  # Set a branch to deploy
-
-jobs:
-  deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: &#39;latest&#39;
-          # extended: true
-
-      - name: Build
-        run: hugo --minify
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-</code></pre><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo<a href="#generate-static-files-and-push-to-repo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>name: github pages
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>on:
+</span></span><span style="display:flex;"><span>  push:
+</span></span><span style="display:flex;"><span>    branches:
+</span></span><span style="display:flex;"><span>      - main  # Set a branch to deploy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>jobs:
+</span></span><span style="display:flex;"><span>  deploy:
+</span></span><span style="display:flex;"><span>    runs-on: ubuntu-18.04
+</span></span><span style="display:flex;"><span>    steps:
+</span></span><span style="display:flex;"><span>      - uses: actions/checkout@v2
+</span></span><span style="display:flex;"><span>        with:
+</span></span><span style="display:flex;"><span>          submodules: true  # Fetch Hugo themes (true OR recursive)
+</span></span><span style="display:flex;"><span>          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - name: Setup Hugo
+</span></span><span style="display:flex;"><span>        uses: peaceiris/actions-hugo@v2
+</span></span><span style="display:flex;"><span>        with:
+</span></span><span style="display:flex;"><span>          hugo-version: &#39;latest&#39;
+</span></span><span style="display:flex;"><span>          # extended: true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - name: Build
+</span></span><span style="display:flex;"><span>        run: hugo --minify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - name: Deploy
+</span></span><span style="display:flex;"><span>        uses: peaceiris/actions-gh-pages@v3
+</span></span><span style="display:flex;"><span>        with:
+</span></span><span style="display:flex;"><span>          github_token: ${{ secrets.GITHUB_TOKEN }}
+</span></span><span style="display:flex;"><span>          publish_dir: ./public
+</span></span></code></pre></div><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo</h3>
 <p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
-<pre tabindex="0"><code>hugo
-</code></pre><p>Now we push it into repo.</p>
-<pre tabindex="0"><code>cd public
-git init
-git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
-git branch --set-upstream-to=origin/master
-git checkout -b master
-git pull
-git add .
-git commit -a -m &#39;my blog&#39;
-git push
-</code></pre><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
-<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
-<h3 id="the-mosting-blocking-issues">The mosting blocking issues:<a href="#the-mosting-blocking-issues" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo
+</span></span></code></pre></div><p>Now we push it into repo.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
+</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/master
+</span></span><span style="display:flex;"><span>git checkout -b master
+</span></span><span style="display:flex;"><span>git pull
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -a -m &#39;my blog&#39;
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
+<h2 id="conclusion">Conclusion</h2>
+<h3 id="the-mosting-blocking-issues">The mosting blocking issues:</h3>
 <ul>
 <li>hugo document did not tell us to overwrite  <code>config.toml</code> by theme’s, which caused I can’t see the content.</li>
 <li>Muti github account issue(personal issue). But I have found best solution, will post another blog to summary that. I think it could be helpful by some people, because most of us have company github account and personal github account both on same laptop.</li>
 </ul>
-<h2 id="ps-sync-md-files-to-github">P.S. Sync .md files to github<a href="#ps-sync-md-files-to-github" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="ps-sync-md-files-to-github">P.S. Sync .md files to github</h2>
 <p>create a repo names <em>blog</em>, then execute below commands as below:</p>
-<pre tabindex="0"><code>cd content
-git init
-git add .
-git commit -m &#34;first commit&#34;
-git branch -M main
-git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/blog
-git branch --set-upstream-to=origin/main 
-git push
-</code></pre>
-			</div>
-			<hr class="post-end">
-			<footer class="post-info">
-				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://func.fun/tags/hugo">hugo</a></span><span class="tag"><a href="https://func.fun/tags/git">git</a></span>
-				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>652 Words</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-03-12 16:04 &#43;0800</p>
-			</footer>
-		</article>
-		<div class="post-nav thin">
-			<a class="next-post" href="https://func.fun/posts/mutiple-gits/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>How to handle mutiple git accounts in same laptop</span>
-			</a>
-		</div>
-		<div id="comments" class="thin">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd content
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m &#34;first commit&#34;
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/blog
+</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/main 
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/hugo/">
+                hugo
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/git/">
+                git
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
 </div>
-	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2023 <a href="https://func.fun">Xuan HE</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://func.fun/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-	</footer>
+      </div>
+    </div>
+  </article>
 
+  
 
+<script>
+  
+  
+    
+    
+  
+</script>
 
-	<script src="https://func.fun/js/bundle.min.580988ed2982bcbb74a1773c7abea97b43e4c43b9324e10cda0813ec6ec4bb67.js" integrity="sha256-WAmI7SmCvLt0oXc8er6pe0PkxDuTJOEM2ggT7G7Eu2c=" crossorigin="anonymous"></script>
-	
+  
 
 </body>
 
