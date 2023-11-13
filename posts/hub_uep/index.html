@@ -146,7 +146,7 @@
 <p>we proposed with mobile team to pass a unique key of serve in all the events except for send, so that we use it to link user behaviors with serve when enriching columns to get the reall detailed message or recommendated item informations.</p>
 <ol>
 <li>serve join back to send by unique key of send.</li>
-<li>impression/click/merch_impression/pl_click join back to serve by unique key of serve</li>
+<li>impression/click/merch_impression/pl_click join back to serve by unique key of serve.</li>
 </ol>
 <h3 id="enriched-and-unified-verticl-columns-for-all-the-actions-make-it-simple-and-efficient-for-downstream-to-use">enriched and unified verticl columns for all the actions, make it simple and efficient for downstream to use.</h3>
 <p>vertically speacking, as we and mobile team designed and defined, they only tracked data that was as non-redundant as possible, for example:</p>
@@ -187,7 +187,7 @@
 </ul>
 <p>but the enriched and unified verticl columns is much more preferred for our downstreams to do analysis or training models, so we did below works:</p>
 <ol>
-<li>exploded impressions to each notifications 1 row</li>
+<li>exploded impressions to each notifications 1 row.</li>
 <li>serve joinned back with in recent 90 days send to enrich all the informations that send is single source of truth, for example: chnl_trckng_id, sent_event_type_desc, chnl_site_id and so on.</li>
 <li>user behaviors joinned back with serve by serve unique keys and message id, recommended item id in recent 90 days serve to enrich all the informations that send and serve is single source of truth, for example: message details, recommended item details and so on.</li>
 <li>defined and stored unified unique key and send, serve join key for all the actions, user can easily calculate count or conbine reaction chain by the keys.</li>
