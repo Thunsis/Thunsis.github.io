@@ -138,14 +138,14 @@
 <h3 id="onboarded-the-new-actions-to-table">onboarded the new actions to table</h3>
 <ol>
 <li>serve: when user clicked bellIcon or Recommended tab, or pulled the page to refresh etc, it would drop a new serve and the message content(items) would be updated based on the newest recommended reult, accrodingly the message content in send is not up-to-date.</li>
-<li>merch_impression: the impression on pop-up carousel</li>
-<li>pl_click: the click on the item of carousel</li>
+<li>merch_impression: the impression on pop-up carousel.</li>
+<li>pl_click: the click on the item of carousel.</li>
 <li>impression: already exist but we extended impressions under Recommended tab for iOS.</li>
 </ol>
 <h3 id="adapt-new-join-key-for-user-behaviors">adapt new join key for user behaviors</h3>
-<p>we proposed with mobile team to pass a unique key of serve in all the events except for send, so that we use it to link user behaviors with serve when enriching columns to get the reall detailed message or recommendated item informations</p>
+<p>we proposed with mobile team to pass a unique key of serve in all the events except for send, so that we use it to link user behaviors with serve when enriching columns to get the reall detailed message or recommendated item informations.</p>
 <ol>
-<li>serve join back to send by unique key of send</li>
+<li>serve join back to send by unique key of send.</li>
 <li>impression/click/merch_impression/pl_click join back to serve by unique key of serve</li>
 </ol>
 <h3 id="enriched-and-unified-verticl-columns-for-all-the-actions-make-it-simple-and-efficient-for-downstream-to-use">enriched and unified verticl columns for all the actions, make it simple and efficient for downstream to use.</h3>
@@ -185,7 +185,7 @@
 </span></span></code></pre></div><ul>
 <li>for the users session infomations and ids of the user actually impressed, clicked messages and recommended items,  IMPRESSION, CLICK, MERCH_IMPRESSION, PL_CLICK is the single source of truth and  will be passed to them.</li>
 </ul>
-<p>but the enriched and unified verticl columns is much more preferred for our downstreams to do analysis or training models, so we did below works</p>
+<p>but the enriched and unified verticl columns is much more preferred for our downstreams to do analysis or training models, so we did below works:</p>
 <ol>
 <li>exploded impressions to each notifications 1 row</li>
 <li>serve joinned back with in recent 90 days send to enrich all the informations that send is single source of truth, for example: chnl_trckng_id, sent_event_type_desc, chnl_site_id and so on.</li>
@@ -193,7 +193,7 @@
 <li>defined and stored unified unique key and send, serve join key for all the actions, user can easily calculate count or conbine reaction chain by the keys.</li>
 </ol>
 <h3 id="exploded-data-into-three-horizontal-layers">exploded data into three horizontal layers</h3>
-<p>horizontally speacking, as UEP data born with 3 layers, users of course need to do analysis on different layers, we also need to explode the flat source data into 3 layers then they can directly to use</p>
+<p>horizontally speacking, as UEP data born with 3 layers, users of course need to do analysis on different layers, we also need to explode the flat source data into 3 layers then they can directly to use.</p>
 <ol>
 <li>exploded send and serve to canvas level, message level and recommend level. all the level shares the higher level informations.</li>
 <li>for impression, click, merch_impression, pl_click, depends on the lowest level of the action, we generated the same and higher level data, for example, the impression happens on a message, then it has canvas level and message level data, the pl_click happens on an item(user clicked an item), then it has canvas level, message level and recommend level data.</li>
