@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 13 Nov 2023 09:52:39 +0800</lastBuildDate><atom:link href="https://func.fun/tags/hub-notification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hub UEP</title>
-      <link>https://func.fun/posts/hub_uep/</link>
+      <link>https://func.fun/posts/hub-uep/</link>
       <pubDate>Mon, 13 Nov 2023 09:52:39 +0800</pubDate>
       
-      <guid>https://func.fun/posts/hub_uep/</guid>
+      <guid>https://func.fun/posts/hub-uep/</guid>
       <description>have been working closely with mobile team learned hub uep new concepts. designed and definied initial UEP new add tags standard for each kind of actions send/serve/impression,click,showdialog,carouselitemclick,dismiss. tested all the stages of sample data, hand made-&amp;gt;preprod-&amp;gt;prod-&amp;gt;1%-&amp;gt;5%-&amp;gt;50%-&amp;gt;100% ramp, reported many issues on data elements. meet whole project timeline, delivered on committed time. have been communicating with downstream Analytics and Science team introduced hub uep new concepts and confirm requirments. follow up questions with mobile team and get back to downstream.</description>
     </item>
     
