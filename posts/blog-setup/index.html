@@ -208,12 +208,11 @@ However, after I made change accordingly, website still is blank.</li>
 </span></span></code></pre></div><p>Now we push it into repo.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public
 </span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
-</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/master
-</span></span><span style="display:flex;"><span>git checkout -b master
-</span></span><span style="display:flex;"><span>git pull
 </span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -a -m &#39;my blog&#39;
+</span></span><span style="display:flex;"><span>git commit -m &#34;my blog&#34;
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
+</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/main
 </span></span><span style="display:flex;"><span>git push
 </span></span></code></pre></div><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
 <h2 id="conclusion">Conclusion</h2>
