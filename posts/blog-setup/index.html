@@ -205,15 +205,28 @@ However, after I made change accordingly, website still is blank.</li>
 </span></span></code></pre></div><h3 id="generate-static-files-and-push-to-repo">Generate static files and push to repo</h3>
 <p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo
-</span></span></code></pre></div><p>Now we push it into repo.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public
+</span></span></code></pre></div><p>Now we push it to repo.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rm -rf .git 
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m &#34;my blog&#34;
 </span></span><span style="display:flex;"><span>git branch -M main
 </span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
-</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/main
-</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span><span style="display:flex;"><span>git branch --set-upstream-to=origin/main 
+</span></span></code></pre></div><p>When you need to re-config local repo when blog contect already exists in github, need to run below commands.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>mkdir public
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://&lt;your_token&gt;@github.com/Thunsis/Thunsis.github.io
+</span></span><span style="display:flex;"><span>git fetch --all
+</span></span><span style="display:flex;"><span>git checkout -f main
+</span></span><span style="display:flex;"><span>git reset --hard origin/main
+</span></span><span style="display:flex;"><span>touch test1.md
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git add .    
+</span></span><span style="display:flex;"><span>git commit -a -m &#39;my blog&#39;
+</span></span><span style="display:flex;"><span>git push -u origin main
 </span></span></code></pre></div><p>See you blog on <code>http://your_name.github.io/</code>, cheers!</p>
 <h2 id="conclusion">Conclusion</h2>
 <h3 id="the-mosting-blocking-issues">The mosting blocking issues:</h3>
