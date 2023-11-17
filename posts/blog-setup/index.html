@@ -206,7 +206,7 @@ However, after I made change accordingly, website still is blank.</li>
 <p>After this command, static files will be generated to hugo project subfolder names <em>public</em>. Which is the exact content we need to deploy to github repo.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hugo
 </span></span></code></pre></div><p>Now we push it to repo.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rm -rf .git 
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd public 
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m &#34;my blog&#34;
