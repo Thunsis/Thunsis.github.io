@@ -1,0 +1,62 @@
+.post-tag {
+  display: block;
+  text-align: center;
+  float: right;
+}
+
+/* 文章页 tags（.post-tags）— 根因修复（2026-08-08）：
+   主题原为「每 tag 一个 inline div + border」，inline 跨行时 Chrome 每个行片段
+   都绘制边框 → tag 碎成多个胶囊。改为 flex 容器 + item 级边框：
+   item 天然完整块，换行整块走，Chrome/Safari 渲染一致。 */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: none;
+  padding: 0;
+}
+
+.post-tags a {
+  display: inline-block;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.post-tags a:hover {
+  text-decoration: underline;
+}
+
+.post-tag a {
+  display: inline-block;
+  border: 1.5px solid #000;
+  border-radius: 3px;
+  padding: 0px 6px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90px;
+  text-align: center;
+}
+
+.post-tag a:hover {
+  border: 1.5px solid #000;
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}

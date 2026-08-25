@@ -1,0 +1,167 @@
+.toc-container {
+  background-color: #f8f9fa;
+  border: 1px solid #eaecef;
+  border-radius: 3px;
+  padding: 0.75rem;
+  
+  /* Position absolutely on the right without affecting content flow */
+  position: fixed;
+  right: 20px; /* Distance from right edge of screen */
+  top: 100px; /* This will be used to calculate equal bottom margin */
+  width: 230px; /* Slightly narrower */
+  
+  /* Ensure scrolling for long TOCs with proper bottom spacing */
+  max-height: calc(100vh - 200px); /* Initial value, will be set by JS */
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  /* Add a slight shadow for better visual separation */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  z-index: 100;
+  
+  /* Improve scrolling experience */
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f8f9fa;
+  
+  /* Ensure bottom spacing */
+  padding-bottom: 1.5rem;
+}
+
+/* Adjust space for content to ensure proper TOC placement */
+.post-content {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 270px; /* Space for TOC + equal margin (width + 2 * right margin) */
+}
+
+.toc-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-family: inherit;
+}
+
+#TableOfContents ul {
+  list-style-type: none;
+  padding-left: 0.75rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+#TableOfContents > ul {
+  padding-left: 0;
+}
+
+#TableOfContents a {
+  color: #333; /* Black text color for TOC links */
+  text-decoration: none;
+  font-size: inherit;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+#TableOfContents a:hover {
+  text-decoration: underline;
+  color: #000; /* Slightly darker on hover */
+}
+
+/* Custom scrollbar for webkit browsers */
+.toc-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.toc-container::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+.toc-container::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 6px;
+  border: 2px solid #f8f9fa;
+}
+
+/* Add space after the last item to ensure bottom spacing when scrolling */
+#TableOfContents > ul > li:last-child {
+  margin-bottom: 0.75rem;
+}
+
+/* Active link styling */
+#TableOfContents a.active {
+  font-weight: bold;
+  color: #333; /* Black color for active items too */
+  position: relative;
+}
+
+#TableOfContents a.active::before {
+  content: "→";
+  position: absolute;
+  left: -15px;
+}
+
+/* Nested levels styling */
+#TableOfContents ul ul {
+  margin-top: 0.2rem;
+}
+
+#TableOfContents ul ul a {
+  font-size: inherit;
+}
+
+/* Responsive behavior */
+@media (max-width: 1200px) {
+  .toc-container {
+    width: 220px;
+    right: 15px;
+  }
+  
+  .post-content {
+    padding-right: 250px;
+  }
+}
+
+/* iPad and tablets specific behavior */
+@media (max-width: 1024px) {
+  .toc-container {
+    position: relative;
+    width: 100%; /* Full width on iPad/tablet */
+    max-width: 100%;
+    right: auto;
+    top: auto;
+    margin: 0 0 20px 0; /* Add bottom margin for spacing */
+    max-height: none; /* No height restriction */
+    overflow-y: visible; /* No scrolling */
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding-bottom: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .post-content {
+    padding-right: 0;
+  }
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  .toc-container {
+    position: relative;
+    width: 100%; /* Full width on mobile */
+    max-width: 100%;
+    right: auto;
+    top: auto;
+    margin: 0 0 15px 0; /* No margins on mobile */
+    max-height: none; /* No height restriction */
+    overflow-y: visible; /* No scrolling */
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding-bottom: 0.75rem; /* Reduced bottom padding */
+  }
+  
+  /* Remove additional bottom spacing on mobile */
+  #TableOfContents > ul > li:last-child {
+    margin-bottom: 0;
+  }
+}

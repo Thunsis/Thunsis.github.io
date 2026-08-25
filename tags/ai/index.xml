@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Xuan</title><link>https://blog.430812.xyz/tags/ai/</link><description>Recent content in AI on Xuan</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Jul 2026 19:00:00 +0800</lastBuildDate><atom:link href="https://blog.430812.xyz/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>为什么 Claude Code 那么好用</title><link>https://blog.430812.xyz/blog/why-claude-code/</link><pubDate>Mon, 06 Jul 2026 19:00:00 +0800</pubDate><guid>https://blog.430812.xyz/blog/why-claude-code/</guid><description>&lt;p&gt;&lt;em&gt;从 agentic 系统的内部视角，拆解 Claude Code 的架构设计与技术哲学&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.430812.xyz/images/why-claude-code-cover.png" alt="Claude Code"&gt;&lt;/p&gt;
+&lt;h2 id="引言"&gt;引言&lt;/h2&gt;
+&lt;p&gt;市面上分析 Claude Code 的文章不少，但大多停留在「产品体验」层面。而我在过去几个月里，深度使用过 OpenClaw（一个类似 Claude Code 的自部署 agentic 系统），同时也看着 Cursor、Copilot、Windsurf 的发展。&lt;/p&gt;
+&lt;p&gt;这篇文章我会从 &lt;strong&gt;Agentic 架构的视角&lt;/strong&gt;拆解 Claude Code 为什么技术选型走对了，以及它背后那些不显而易见的设计决策。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="一tool-use-架构-vs-补全架构"&gt;一、Tool-Use 架构 vs 补全架构&lt;/h2&gt;
+&lt;p&gt;理解 Claude Code 和传统 AI 编程工具的差异，先看一张架构对比：&lt;/p&gt;
+&lt;h3 id="copilot--cursor-的补全模式"&gt;Copilot / Cursor 的补全模式&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.430812.xyz/images/why-claude-code/completion-arch_6Gw6haPvTj3.png" alt="补全架构"&gt;&lt;/p&gt;
+&lt;p&gt;核心是 &lt;strong&gt;stateless 的代码补全&lt;/strong&gt;。无论 Cursor 做得多好（检索增强、多文件上下文、Agent 模式），它的底层基因仍然是补全器。&lt;/p&gt;
+&lt;h3 id="claude-code-的-tool-use-模式"&gt;Claude Code 的 Tool-Use 模式&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.430812.xyz/images/why-claude-code/tool-use-arch_AQxkiPlDZGR.png" alt="Tool-Use 架构"&gt;&lt;/p&gt;
+&lt;p&gt;核心是 &lt;strong&gt;stateful 的代理循环&lt;/strong&gt;。Claude Code 不是一个代码补全器，而是一个&lt;strong&gt;能够在终端的 Unix 环境下自主行动的代理&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这个差异决定了几乎所有下游体验的不同。补全器只能在你当前上下文中做建议，而代理可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find . -name &amp;quot;*.py&amp;quot; | xargs grep &amp;quot;deprecated_api&amp;quot;&lt;/code&gt; — 真实搜索整个项目&lt;/li&gt;
+&lt;li&gt;读 A 文件、改 B 文件、测试 C 文件、提交 — 完整工作流&lt;/li&gt;
+&lt;li&gt;碰到编译错误，自己读错误日志，修正代码，再试一次&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这不是渐进式的改进，是&lt;strong&gt;范式的切换&lt;/strong&gt;。&lt;/p&gt;</description></item></channel></rss>

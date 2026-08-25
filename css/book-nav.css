@@ -1,0 +1,13 @@
+/* 书章节上下章导航（v4：层级化——小标签「上一章/下一章」+ 大标题，去毛坯感）
+   2026-08-12：v3 修好布局逻辑但视觉=一条线+两行字（毛坯感）；
+   v4 加 nav-label 小标签建立信息层级，标题独立成行，保持黑白极简零装饰 */
+.book-nav{display:flex;gap:2rem;margin:2.5rem 0 2rem;padding-top:1.25rem;border-top:2px solid #482936}
+.book-nav a{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:.4rem;color:#000;text-decoration:none}
+.book-nav .nav-label{font-size:.8rem;font-weight:400;letter-spacing:.08em;color:#666}
+.book-nav .nav-title{font-size:1.125rem;font-weight:600;line-height:1.5}
+.book-nav a:hover .nav-title,.book-nav a:focus-visible .nav-title{text-decoration:underline;text-decoration-color:#000}
+.book-nav-next{align-items:flex-end;text-align:right}
+@media screen and (max-width:600px){
+  .book-nav{flex-direction:column;gap:1.25rem}
+  .book-nav-next{align-items:flex-start;text-align:left}
+}

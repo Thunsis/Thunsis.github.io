@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Rounded background -->
+  <rect width="512" height="512" fill="#ffffff" rx="80" ry="80"/>
+  
+  <!-- Stylish X with gradient -->
+  <defs>
+    <linearGradient id="xGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333333;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Stylized X shape -->
+  <g transform="translate(256, 256) rotate(45) translate(-256, -256)">
+    <rect x="96" y="216" width="320" height="80" rx="40" ry="40" fill="url(#xGradient)" />
+    <rect x="216" y="96" width="80" height="320" rx="40" ry="40" fill="url(#xGradient)" />
+  </g>
+</svg>
